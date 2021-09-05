@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="es"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript" src="dist2/js/site.min.js"></script>
+
+        <title>Nixon : Widget</title>
+
+        <!-- ================= Favicon ================== -->
+        <!-- Standard -->
+        <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff"/>
+        <!-- Retina iPad Touch Icon-->
+        <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff"/>
+        <!-- Retina iPhone Touch Icon-->
+        <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff"/>
+        <!-- Standard iPad Touch Icon--> 
+        <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff"/>
+        <!-- Standard iPhone Touch Icon--> 
+        <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff"/>
+
+        <!-- Styles -->
+        <link href="#{request.contextPath}/assets/fontAwesome/css/fontawesome-all.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/css/lib/themify-icons.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/css/lib/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/css/lib/nixon.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet"/>
+    </h:head>
+
+
+    <h:body class="bg-primary">
+
+        <div class="Nixon-login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <div class="login-content">
+                            <div class="login-logo">
+                                <a href="index.xhtml"><span>Hibissoft</span></a>
+                            </div>
+                            <div class="login-form">
+                                <div align="center">
+                                    <img src="images/login.png" width="70" height="70"></img>    
+                                </div>
+                                <br></br>
+                                <h:form id="formUsuario">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h:outputLabel for="formIdUsuario">Ingrese su correo de Usuario</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.correoIn}"
+                                                maxlength="50"
+                                                required="true"
+                                                requiredMessage="Ingrese correo Electronico"
+                                                class="form-control" 
+                                                id="formIdUsuario">
+
+                                            </h:inputText>
+                                            <h:message for="formIdUsuario" style="color: red"></h:message>
+                                        </div>
+                                    </div>
+                                    <!-- segundo row-->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <br></br>
+                                            <h:outputLabel for="formPassword">Contraseña</h:outputLabel>
+                                            <h:inputSecret 
+                                                value="#{gestionUsuario.claveIn}"
+                                                maxlength="30"
+                                                required="true"
+                                                requiredMessage="Por favor igrese la contraseña"
+                                                class="form-control" id="formPassword"></h:inputSecret>
+                                            <h:message for="formPassword" style="color: red"></h:message>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="index.xhtml">Volver al Inicio</a><br></br>
+                                            <a href="recuperarContra.xhtml">Recuperar Contraseña</a></div>
+                                    </div>
+                                    <br></br>
+                                    <h:commandButton action="#{gestionUsuario.validarUsuario()}"  class="btn btn-primary" value="INICIAR SESION"></h:commandButton>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>
