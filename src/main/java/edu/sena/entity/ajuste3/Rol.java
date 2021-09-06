@@ -14,9 +14,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -25,7 +28,7 @@ import javax.validation.constraints.Size;
  * @author ai00214
  */
 @Entity
-@Table(name = "tblrol")
+@Table(name = "tbl_rol")
 @NamedQueries({
     @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")})
 public class Rol implements Serializable {
@@ -34,60 +37,73 @@ public class Rol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "rolid")
-    private Integer rolid;
+    @Column(name = "rol_rolid")
+    private Integer rolRolid;
     @Size(max = 45)
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "rol_nombre")
+    private String rolNombre;
     @Size(max = 45)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @ManyToMany(mappedBy = "rolCollection", fetch = FetchType.LAZY)
-    private Collection<Usuario> usuarioCollection;
+    @Column(name = "rol_descripcion")
+    private String rolDescripcion;
+    @JoinTable(name = "tbl_usuario_has_tbl_rol", joinColumns = {
+        @JoinColumn(name = "fk_rolid", referencedColumnName = "rol_rolid")}, inverseJoinColumns = {
+        @JoinColumn(name = "fk_usuarioid", referencedColumnName = "usuarioid")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Usuario> tblusuarioCollection;
+    @OneToMany(mappedBy = "fkRolid", fetch = FetchType.LAZY)
+    private Collection<Vista> vistaCollection;
 
     public Rol() {
     }
 
-    public Rol(Integer rolid) {
-        this.rolid = rolid;
+    public Rol(Integer rolRolid) {
+        this.rolRolid = rolRolid;
     }
 
-    public Integer getRolid() {
-        return rolid;
+    public Integer getRolRolid() {
+        return rolRolid;
     }
 
-    public void setRolid(Integer rolid) {
-        this.rolid = rolid;
+    public void setRolRolid(Integer rolRolid) {
+        this.rolRolid = rolRolid;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getRolNombre() {
+        return rolNombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setRolNombre(String rolNombre) {
+        this.rolNombre = rolNombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getRolDescripcion() {
+        return rolDescripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setRolDescripcion(String rolDescripcion) {
+        this.rolDescripcion = rolDescripcion;
     }
 
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public Collection<Usuario> getTblusuarioCollection() {
+        return tblusuarioCollection;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setTblusuarioCollection(Collection<Usuario> tblusuarioCollection) {
+        this.tblusuarioCollection = tblusuarioCollection;
+    }
+
+    public Collection<Vista> getVistaCollection() {
+        return vistaCollection;
+    }
+
+    public void setVistaCollection(Collection<Vista> vistaCollection) {
+        this.vistaCollection = vistaCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (rolid != null ? rolid.hashCode() : 0);
+        hash += (rolRolid != null ? rolRolid.hashCode() : 0);
         return hash;
     }
 
@@ -98,7 +114,7 @@ public class Rol implements Serializable {
             return false;
         }
         Rol other = (Rol) object;
-        if ((this.rolid == null && other.rolid != null) || (this.rolid != null && !this.rolid.equals(other.rolid))) {
+        if ((this.rolRolid == null && other.rolRolid != null) || (this.rolRolid != null && !this.rolRolid.equals(other.rolRolid))) {
             return false;
         }
         return true;
@@ -106,7 +122,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sena.entity.ajuste3.Rol[ rolid=" + rolid + " ]";
+        return "com.mycompany.alterno.Rol[ rolRolid=" + rolRolid + " ]";
     }
     
 }

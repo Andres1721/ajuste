@@ -12,8 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -54,14 +52,10 @@ public class Usuario implements Serializable {
     @Size(max = 45)
     @Column(name = "clave")
     private String clave;
-
     @Column(name = "estado")
     private Boolean estado;
-    @JoinTable(name = "tblusuario_tiene_tblrol", joinColumns = {
-        @JoinColumn(name = "fk_usuarioid", referencedColumnName = "usuarioid")}, inverseJoinColumns = {
-        @JoinColumn(name = "fk_rolid", referencedColumnName = "rolid")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Rol> rolCollection;
+    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
+    private Collection<Rol> RolCollection;
 
     public Usuario() {
     }
@@ -134,12 +128,12 @@ public class Usuario implements Serializable {
         this.estado = estado;
     }
 
-    public Collection<Rol> getRolCollection() {
-        return rolCollection;
+    public Collection<Rol> getTblRolCollection() {
+        return RolCollection;
     }
 
-    public void setRolCollection(Collection<Rol> rolCollection) {
-        this.rolCollection = rolCollection;
+    public void setTblRolCollection(Collection<Rol> RolCollection) {
+        this.RolCollection = RolCollection;
     }
 
     @Override
@@ -164,7 +158,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sena.entity.ajuste3.Usuario[ usuarioid=" + usuarioid + " ]";
+        return "com.mycompany.alterno.Usuario[ usuarioid=" + usuarioid + " ]";
     }
-
+    
 }

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <!-- Basic Page Info -->
+        <meta charset="utf-8"/>
+        <title>Hibissoft </title>
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800" rel="stylesheet"/>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/fontAwesome/css/fontawesome-all.min.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/lib/themify-icons.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/lib/sidebar.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/lib/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/lib/nixon.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/lib/lobipanel/css/lobipanel.min.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/style.css"/>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript" src="dist2/js/site.min.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-119386393-1');
+        </script>
+
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+    </h:head>
+
+    <h:body>
+        <div class="header">
+            <ui:insert name="areaSuperior">
+                <ui:include src="areaSuperior.xhtml"/>
+            </ui:insert>
+        </div>
+        <ui:insert name="menuVertical">
+            <ui:include src="menuVertical.xhtml"/>
+        </ui:insert>
+
+        <div class="content-wrap">
+            <ui:insert name="areaTrabajo">
+                <ui:include src="areaTrabajo.xhtml"/>
+            </ui:insert>
+        </div>
+
+        <!-- /# content wrap -->
+        <script src="#{request.contextPath}/assets/js/lib/jquery.min.js"></script>
+        <!-- jquery vendor -->
+        <script src="#{request.contextPath}/assets/js/lib/jquery.nanoscroller.min.js"></script>
+        <!-- nano scroller -->
+        <script src="#{request.contextPath}/assets/js/lib/sidebar.js"></script>
+        <!-- sidebar -->
+        <script src="#{request.contextPath}/assets/js/lib/bootstrap.min.js"></script>
+        <!-- bootstrap -->
+        <script src="#{request.contextPath}/assets/js/lib/mmc-common.js"></script>
+        <script src="#{request.contextPath}/assets/js/lib/mmc-chat.js"></script>
+        <!--  Chart js -->
+        <script src="#{request.contextPath}/assets/js/lib/chart-js/Chart.bundle.js"></script>
+        <script src="#{request.contextPath}/assets/js/lib/chart-js/chartjs-init.js"></script>
+        <!-- // Chart js -->
+        <!--  Datamap -->
+        <script src="#{request.contextPath}/assets/js/lib/datamap/d3.min.js"></script>
+        <script src="#{request.contextPath}/assets/js/lib/datamap/topojson.js"></script>
+        <script src="#{request.contextPath}/assets/js/lib/datamap/datamaps.world.min.js"></script>
+        <script src="#{request.contextPath}/assets/js/lib/datamap/datamap-init.js"></script>
+        <script src="#{request.contextPath}/assets/lib/lobipanel/js/lobipanel.js"></script>
+        <!-- // Datamap -->
+        <script src="#{request.contextPath}/assets/js/scripts.js"></script>
+        <!-- scripit init-->
+        <script>
+            $(document).ready(function () {
+                $('#lobipanel-custom-control').lobiPanel({
+                    reload: false,
+                    close: false,
+                    editTitle: false
+                });
+            });
+        </script>
+    </h:body>
+
+</html>

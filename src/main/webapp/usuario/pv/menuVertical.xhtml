@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition>
+        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+            <div class="nano">
+                <div class="nano-content">
+                    <ul>
+                        <li class="active">
+                            <a class="sidebar-sub-toggle"><i class="ti-home"></i> COLAFF <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="quienesSomos.xhtml">Quienes Somos</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="app-profile.xhtml"><i class="ti-user"></i> Profile</a></li>
+
+
+                        <c:forEach var="rol" items="#{gestionUsuario.usuLog.rolCollection}">
+
+                            <li>
+                                <a class="sidebar-sub-toggle"><i class="ti-gift"></i><span class="sidebar-collapse-icon ti-angle-down">#{rol.nombre}</span></a>
+                                <ul>
+                                    <li><a href="clientes.xhtml">Registro de Clientes</a></li>
+                                    <c:forEach var="vista" items="#{rol.vistaCollection}">
+                                        <c:if test="#{vista.vistaEstado eq '1'}">
+                                            <li><a href="#{vista.vistaRuta}">#{vista.vistaNombre}</a></li>
+                                        </c:if>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </c:forEach>
+                        <li><a href="index.xhtml"><i class="ti-close"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </ui:composition>
+</html>
+
