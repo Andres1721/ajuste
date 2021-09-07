@@ -49,7 +49,7 @@ public class Rol implements Serializable {
         @JoinColumn(name = "fk_rolid", referencedColumnName = "rol_rolid")}, inverseJoinColumns = {
         @JoinColumn(name = "fk_usuarioid", referencedColumnName = "usuarioid")})
     @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Usuario> tblusuarioCollection;
+    private Collection<Usuario> usuarioCollection;
     @OneToMany(mappedBy = "fkRolid", fetch = FetchType.LAZY)
     private Collection<Vista> vistaCollection;
 
@@ -84,12 +84,12 @@ public class Rol implements Serializable {
         this.rolDescripcion = rolDescripcion;
     }
 
-    public Collection<Usuario> getTblusuarioCollection() {
-        return tblusuarioCollection;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setTblusuarioCollection(Collection<Usuario> tblusuarioCollection) {
-        this.tblusuarioCollection = tblusuarioCollection;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     public Collection<Vista> getVistaCollection() {

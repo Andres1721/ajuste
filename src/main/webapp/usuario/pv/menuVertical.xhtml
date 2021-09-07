@@ -19,20 +19,7 @@
                         <li><a href="app-profile.xhtml"><i class="ti-user"></i> Profile</a></li>
 
 
-                        <c:forEach var="rol" items="#{gestionUsuario.usuLog.rolCollection}">
-
-                            <li>
-                                <a class="sidebar-sub-toggle"><i class="ti-gift"></i><span class="sidebar-collapse-icon ti-angle-down">#{rol.nombre}</span></a>
-                                <ul>
-                                    <li><a href="clientes.xhtml">Registro de Clientes</a></li>
-                                    <c:forEach var="vista" items="#{rol.vistaCollection}">
-                                        <c:if test="#{vista.vistaEstado eq '1'}">
-                                            <li><a href="#{vista.vistaRuta}">#{vista.vistaNombre}</a></li>
-                                        </c:if>
-                                    </c:forEach>
-                                </ul>
-                            </li>
-                        </c:forEach>
+     
                         <li><a href="index.xhtml"><i class="ti-close"></i> Logout</a></li>
                     </ul>
                 </div>

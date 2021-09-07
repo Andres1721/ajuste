@@ -54,9 +54,10 @@ public class Usuario implements Serializable {
     private String clave;
     @Column(name = "estado")
     private Boolean estado;
-    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
-    private Collection<Rol> RolCollection;
 
+    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
+    private Collection<Rol> rolCollection;
+    
     public Usuario() {
     }
 
@@ -128,13 +129,7 @@ public class Usuario implements Serializable {
         this.estado = estado;
     }
 
-    public Collection<Rol> getTblRolCollection() {
-        return RolCollection;
-    }
 
-    public void setTblRolCollection(Collection<Rol> RolCollection) {
-        this.RolCollection = RolCollection;
-    }
 
     @Override
     public int hashCode() {
