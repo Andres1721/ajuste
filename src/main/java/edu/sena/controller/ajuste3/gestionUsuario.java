@@ -5,14 +5,18 @@
  */
 package edu.sena.controller.ajuste3;
 
+import edu.sena.entity.ajuste3.Rol;
 import edu.sena.entity.ajuste3.Usuario;
+import edu.sena.facade.ajuste3.RolFacadeLocal;
 import edu.sena.facade.ajuste3.UsuarioFacadeLocal;
 import edu.sena.utilidad.Ajuste3.Mail;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
@@ -28,6 +32,9 @@ public class gestionUsuario implements Serializable {
     @EJB
     UsuarioFacadeLocal usuarioFacadeLocal;
 
+    @EJB
+    RolFacadeLocal rolFacadeLocal;
+
     private Usuario usuReg = new Usuario();
     private Usuario usuLog = new Usuario();
     private Usuario usuTemporal = new Usuario();
@@ -35,8 +42,15 @@ public class gestionUsuario implements Serializable {
     private String nombreIn = "";
     private String correoIn = "";
     private String claveIn = "";
+    private List<Rol> todosLosRoles = new ArrayList<>();
+    private List<Rol> rolesSinAsignar = new ArrayList<>();
 
     public gestionUsuario() {
+    }
+
+    @PostConstruct
+    public void cargaInicial() {
+        todosLosRoles.addAll(rolFacadeLocal.findAll());
     }
 
     public List<Usuario> listarUsuarios() {
@@ -54,7 +68,7 @@ public class gestionUsuario implements Serializable {
                     + "})");
         } else {
             FacesContext fc = FacesContext.getCurrentInstance();
-            fc.getExternalContext().redirect("registrarUsuario.xhtml");
+            fc.getExternalContext().redirect("usuario/index.xhtml");
 
         }
 
@@ -203,6 +217,22 @@ public class gestionUsuario implements Serializable {
 
     public void setUsuTemporal(Usuario usuTemporal) {
         this.usuTemporal = usuTemporal;
+    }
+
+    public List<Rol> getTodosLosRoles() {
+        return todosLosRoles;
+    }
+
+    public void setTodosLosRoles(List<Rol> todosLosRoles) {
+        this.todosLosRoles = todosLosRoles;
+    }
+
+    public List<Rol> getRolesSinAsignar() {
+        return rolesSinAsignar;
+    }
+
+    public void setRolesSinAsignar(List<Rol> rolesSinAsignar) {
+        this.rolesSinAsignar = rolesSinAsignar;
     }
 
 }

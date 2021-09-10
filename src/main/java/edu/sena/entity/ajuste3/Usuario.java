@@ -56,7 +56,7 @@ public class Usuario implements Serializable {
     private Boolean estado;
 
     @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
-    private Collection<Rol> rolCollection;
+     private Collection<Rol> rolCollection;
     
     public Usuario() {
     }
@@ -154,6 +154,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.alterno.Usuario[ usuarioid=" + usuarioid + " ]";
+    }
+
+    public Collection<Rol> getRolCollection() {
+        return rolCollection;
+    }
+
+    public void setRolCollection(Collection<Rol> rolCollection) {
+        this.rolCollection = rolCollection;
     }
     
 }

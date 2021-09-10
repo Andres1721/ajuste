@@ -6,7 +6,6 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -36,7 +35,6 @@
         <link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet"/>
     </h:head>
 
-
     <h:body class="bg-primary">
 
         <div class="Nixon-login">
@@ -48,48 +46,35 @@
                                 <a href="index.xhtml"><span>Hibissoft</span></a>
                             </div>
                             <div class="login-form">
-                                <div align="center">
-                                    <img src="images/login.png" width="70" height="70"></img>    
-                                </div>
-                                <br></br>
+                                <h4>Reestablecer Contraseña</h4>
                                 <h:form id="formUsuario">
                                     <div class="row">
                                         <div class="col">
-                                            <h:outputLabel for="formIdUsuario">Ingrese su correo de Usuario</h:outputLabel>
+                                            <h:outputLabel for="formCorreo">Ingrese su correo de Usuario</h:outputLabel>
                                             <h:inputText 
                                                 value="#{gestionUsuario.correoIn}"
-                                                maxlength="50"
+                                                maxlength="20"
                                                 required="true"
-                                                requiredMessage="Ingrese correo Electronico"
+                                                requiredMessage="Ingrese por favor el  Correo"
                                                 class="form-control" 
-                                                id="formIdUsuario">
+                                                id="formCorreo">
 
                                             </h:inputText>
-                                            <h:message for="formIdUsuario" style="color: red"></h:message>
+                                            <h:message for="formCorreo" style="color: red"></h:message>
                                         </div>
                                     </div>
-                                    <!-- segundo row-->
+                                    <!-- segundo row-->                
                                     <div class="row">
-                                        <div class="form-group">
-                                            <br></br>
-                                            <h:outputLabel for="formPassword">Contraseña</h:outputLabel>
-                                            <h:inputSecret 
-                                                value="#{gestionUsuario.claveIn}"
-                                                maxlength="30"
-                                                required="true"
-                                                requiredMessage="Por favor ingrese la contraseña"
-                                                class="form-control" id="formPassword"></h:inputSecret>
-                                            <h:message for="formPassword" style="color: red"></h:message>
-                                        </div>
-
                                     </div>
+                                    <br></br>
                                     <div class="row">
                                         <div class="col">
                                             <a href="index.xhtml">Volver al Inicio</a><br></br>
                                             <a href="recuperarContrasena.xhtml">Recuperar Contraseña</a></div>
                                     </div>
                                     <br></br>
-                                    <h:commandButton action="#{gestionUsuario.validarUsuario()}"  class="btn btn-primary" value="INICIAR SESION"></h:commandButton>
+                                    
+                                    <h:commandButton action="#{gestionUsuario.recuperarClave()}"  class="btn btn-primary" value="Recuperar Contraseña"></h:commandButton>
                                 </h:form>
                             </div>
                         </div>

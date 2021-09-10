@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
-        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+ <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
             <div class="nano">
                 <div class="nano-content">
                     <ul>
@@ -23,8 +23,8 @@
                                 <a class="sidebar-sub-toggle"><i class="ti-files"></i>#{rol.rolNombre}<span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
                                     <c:forEach var="vista" items="#{rol.vistaCollection}">
-                                        <c:if test="#{(vista.visEstado eq '1')}">
-                                            <li><a href="#{vista.visRuta}">#{vista.visNombres}</a></li>
+                                        <c:if test="#{vista.visEstado eq '1'}">
+                                            <li><a href="#{vista.visRuta.replace('/administrador','')}">#{vista.visNombres}</a></li>
                                         </c:if>
                                     </c:forEach>
                                 </ul>
