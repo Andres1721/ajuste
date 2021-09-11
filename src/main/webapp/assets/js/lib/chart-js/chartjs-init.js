@@ -19,7 +19,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: '#e6a1f2',
+                pointBackgroundColor: '#e6a1f2'
 
                     }, {
                 label: "Foods",
@@ -30,7 +30,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: '#ed7f7e',
+                pointBackgroundColor: '#ed7f7e'
                     }, {
                 label: "Electronics",
                 data: [0, 50, 40, 20, 40, 79, 20],
@@ -40,7 +40,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: '#87de75',
+                pointBackgroundColor: '#87de75'
                     }]
         },
         options: {
@@ -55,14 +55,14 @@
                 titleFontFamily: 'Montserrat',
                 bodyFontFamily: 'Montserrat',
                 cornerRadius: 3,
-                intersect: false,
+                intersect: false
             },
             legend: {
                 labels: {
                     usePointStyle: true,
-                    fontFamily: 'Montserrat',
-                },
-            },
+                    fontFamily: 'Montserrat'
+                }
+            }
             scales: {
                 xAxes: [{
                     display: true,
@@ -110,7 +110,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: 'rgba(255,163,161,1)',
+                pointBackgroundColor: 'rgba(255,163,161,1)'
                     }, {
                 label: "Cards Completed",
                 data: [0, 7, 3, 12, 6, 27, 0],
@@ -120,7 +120,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: 'rgba(135,222,117,1)',
+                pointBackgroundColor: 'rgba(135,222,117,1)'
                     }
                     , {
                 label: "Product Release",
@@ -131,7 +131,7 @@
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
-                pointBackgroundColor: 'rgba(95,180,250,1)',
+                pointBackgroundColor: 'rgba(95,180,250,1)'
                     }]
         },
         options: {
@@ -145,14 +145,14 @@
                 titleFontFamily: 'Montserrat',
                 bodyFontFamily: 'Montserrat',
                 cornerRadius: 3,
-                intersect: false,
+                intersect: false
             },
             legend: {
                 position: 'top',
                 labels: {
                     usePointStyle: true,
-                    fontFamily: 'Montserrat',
-                },
+                    fontFamily: 'Montserrat'
+                }
 
 
             },
@@ -181,7 +181,7 @@
                         }]
             },
             title: {
-                display: false,
+                display: false
             }
         }
     };
