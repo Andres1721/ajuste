@@ -34,6 +34,8 @@ public interface UsuarioFacadeLocal {
 
     public Usuario recuperarClave(String correoIn);
 
+    public Usuario exitenciadeId(int id);
+
     public List<Usuario> listarUsuarios();
 
     public boolean cambiarEstado(Usuario usuReg);

@@ -5,7 +5,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <f:event listener="#{gestionUsuario.validarUsuarioActivo()}" type="preRenderView" ></f:event>
 
         <div class="pull-left">
             <div class="logo">
@@ -149,18 +148,9 @@
                                 <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
                                 <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
                                 <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                                <li>
-                                    <a>
-                                        <h:form>
-                                            <h:commandLink action="#{gestionUsuario.cerraSesion()}">
-                                            </h:commandLink>
-                                        </h:form>
-                                        <i class="ti-power-off"></i>
-                                        <span>
-                                            Cerrar Sesión
-                                        </span>   
-                                    </a>
-                                </li>
+                                <li><a href="#"><i class="ti-lock"></i> <span> Cerrar Sesión</span></a></li>
+
+
                             </ul>
                         </div>
                     </div>

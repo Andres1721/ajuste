@@ -83,7 +83,16 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return null;
         }
     }
-
+    @Override
+    public Usuario exitenciadeId(int id) {
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuarioid = :id");
+            q.setParameter("id", id);
+            return (Usuario) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
     @Override
     public List<Usuario> listarUsuarios() {
 

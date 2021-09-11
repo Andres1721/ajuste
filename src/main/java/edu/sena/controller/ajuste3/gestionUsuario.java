@@ -75,29 +75,39 @@ public class gestionUsuario implements Serializable {
     }
 
     public void registrarUsuario() {
-        System.out.println("Entro alantes");
-        if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
-            System.out.println("Entro al if");
-            PrimeFaces.current().executeScript("Swal.fire({"
-                    + "  title: 'OK!',"
-                    + "  text: 'Usuario Registrado',"
-                    + "  icon: 'success',"
-                    + "  confirmButtonText: 'Aceptar'"
-                    + "})");
-            System.out.println("Entro al if 1");
+        try {
+            Usuario usuExist = usuarioFacadeLocal.recuperarClave(usuReg.getCorreoelectronico());
+            if ((usuExist == null || usuExist.getCorreoelectronico() == null))  {
+                if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
+                    usuReg = new Usuario();
+                    
+                    PrimeFaces.current().executeScript("Swal.fire({"
+                            + "  title: 'OK!',"
+                            + "  text: 'Usuario Registrado',"
+                            + "  icon: 'success',"
+                            + "  confirmButtonText: 'Aceptar'"
+                            + "})");
 
-        } else {
-            System.out.println("Entro al else");
-            PrimeFaces.current().executeScript("Swal.fire({"
-                    + "  title: 'Error!',"
-                    + "  text: 'Usuario no Registrado',"
-                    + "  icon: 'error',"
-                    + "  confirmButtonText: 'Intentar de nuevo'"
-                    + "})");
-            System.out.println("Entro al else 2");
+                } else {
+                    PrimeFaces.current().executeScript("Swal.fire({"
+                            + "  title: 'Error!',"
+                            + "  text: 'Usuario no Registrado',"
+                            + "  icon: 'error',"
+                            + "  confirmButtonText: 'Intentar de nuevo'"
+                            + "})");
+                }
+            } else {
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Error!',"
+                        + "  text: 'El usuario ya existe en el sistema',"
+                        + "  icon: 'error',"
+                        + "  confirmButtonText: 'Ingresar otro usuario'"
+                        + "})");
+            }
+
+        } catch (Exception e) {
+
         }
-
-        usuReg = new Usuario();
 
     }
 
@@ -110,7 +120,7 @@ public class gestionUsuario implements Serializable {
 
     }
 
-    public void validarUsusarioActivo() throws IOException {
+    public void validarUsuarioActivo() throws IOException {
         if (usuLog == null || usuLog.getCorreoelectronico() == null) {
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.getExternalContext().invalidateSession();

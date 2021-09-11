@@ -2,8 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
+        <f:event listener="#{gestionUsuario.validarUsuarioActivo()}" type="preRenderView" ></f:event>
+
         <div class="header">
             <div class="pull-left">
                 <div class="logo">
@@ -25,7 +28,7 @@
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Mr. Jane</div>
@@ -36,7 +39,7 @@
 
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Mariam</div>
@@ -46,7 +49,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Tasnim</div>
@@ -56,7 +59,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Jane Roe</div>
@@ -81,7 +84,7 @@
                                 <ul>
                                     <li class="notification-unread">
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/1.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/1.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Jane Doe</div>
@@ -91,7 +94,7 @@
                                     </li>
                                     <li class="notification-unread">
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/2.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Jane Roe</div>
@@ -101,7 +104,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Jane Doe</div>
@@ -111,7 +114,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg" alt="" />
+                                            <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/2.jpg" alt="" />
                                             <div class="notification-content">
                                                 <small class="notification-timestamp pull-right">02:34 PM</small>
                                                 <div class="notification-heading">Jane Roe</div>
@@ -127,7 +130,7 @@
                         </div>
                     </li>
                     <li class="header-icon dib chat-sidebar-icon"><i class="ti-comments"></i></li>
-                    <li class="header-icon dib"><img class="avatar-img" src="assets/images/avatar/1.jpg" alt="" /> <span class="user-avatar">Jane <i class="ti-angle-down f-s-10"></i></span>
+                    <li class="header-icon dib"><img class="avatar-img" src="../../assets/images/avatar/1.jpg" alt="" /> <span class="user-avatar">Jane <i class="ti-angle-down f-s-10"></i></span>
                         <div class="drop-down dropdown-profile">
                             <div class="dropdown-content-heading">
                                 <span class="text-left">Upgrade Now</span>
@@ -143,7 +146,17 @@
                                     <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
                                     <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
                                     <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                                    <li><a href="#"><i class="ti-power-off"></i> <span>Logout</span></a></li>
+                                    <li>
+                                        <a>
+                                            <h:form>
+                                                <h:commandLink action="#{gestionUsuario.cerraSesion()}" class="ti-power-off">
+                                                </h:commandLink>
+                                            </h:form>
+                                            <span>
+                                                Cerrar Sesión
+                                            </span>   
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -166,19 +179,19 @@
 
                                     <div id="tab1" class="s12 tab-content">
                                         <ul>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
+                                            <li><img src="../../assets/images/1.png" alt="" /></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -197,7 +210,7 @@
                                 <li class="user-tooltip" data-id="1" data-status="online" data-username="Rufat Askerov" data-position="left"  data-filter-name="rufat askerov">
                                     <!-- BEGIN USER IMAGE-->
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
+                                        <img src="../../assets/images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
                                     </div>
                                     <!-- END USER IMAGE-->
                                     <!-- BEGIN USERNAME-->
@@ -209,7 +222,7 @@
                                 <!-- BEGIN USER-->
                                 <li class="user-tooltip" data-id="3" data-status="online" data-username="Alice" data-position="left"  data-filter-name="alice">
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Alice" />
+                                        <img src="../../assets/images/avatar/1.jpg" class="avatar" alt="Alice" />
                                     </div>
                                     <span class="user-name">Alice</span>
                                     <span class="user-show"></span>
@@ -217,7 +230,7 @@
                                 <!-- BEGIN USER-->
                                 <li class="user-tooltip" data-id="7" data-status="offline" data-username="Michael Scofield" data-position="left"  data-filter-name="michael scofield">
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Michael Scofield" />
+                                        <img src="../../assets/images/avatar/1.jpg" class="avatar" alt="Michael Scofield" />
                                     </div>
                                     <span class="user-name">Michael Scofield</span>
                                     <span class="user-show"></span>
@@ -225,7 +238,7 @@
                                 <!-- BEGIN USER-->
                                 <li class="user-tooltip" data-id="5" data-status="online" data-username="Irina Shayk" data-position="left" data-filter-name="irina shayk">
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Irina Shayk" />
+                                        <img src="../../assets/images/avatar/1.jpg" class="avatar" alt="Irina Shayk" />
                                     </div>
                                     <span class="user-name">Irina Shayk</span>
                                     <span class="user-show"></span>
@@ -233,7 +246,7 @@
                                 <!-- BEGIN USER-->
                                 <li class="user-tooltip" data-id="6" data-status="offline" data-username="Sara Tancredi" data-position="left" data-filter-name="sara tancredi">
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Sara Tancredi" />
+                                        <img src="}../../assets/images/avatar/1.jpg" class="avatar" alt="Sara Tancredi" />
                                     </div>
                                     <span class="user-name">Sara Tancredi</span>
                                     <span class="user-show"></span>
@@ -241,7 +254,7 @@
                                 <!-- BEGIN USER-->
                                 <li class="user-tooltip" data-id="7" data-status="offline" data-username="Jane" data-position="left"  data-filter-name="Jane">
                                     <div class="user-image">
-                                        <img src="#{request.contextPath}assets/images/avatar/1.jpg" class="avatar" alt="Jane" />
+                                        <img src="../../assets/images/avatar/1.jpg" class="avatar" alt="Jane" />
                                     </div>
                                     <span class="user-name">Jane</span>
                                     <span class="user-show"></span>
