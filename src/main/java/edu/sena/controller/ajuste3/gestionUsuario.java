@@ -75,39 +75,25 @@ public class gestionUsuario implements Serializable {
     }
 
     public void registrarUsuario() {
-        try {
-            Usuario usuExist = usuarioFacadeLocal.recuperarClave(usuReg.getCorreoelectronico());
-            if ((usuExist == null || usuExist.getCorreoelectronico() == null))  {
-                if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
-                    usuReg = new Usuario();
-                    
-                    PrimeFaces.current().executeScript("Swal.fire({"
-                            + "  title: 'OK!',"
-                            + "  text: 'Usuario Registrado',"
-                            + "  icon: 'success',"
-                            + "  confirmButtonText: 'Aceptar'"
-                            + "})");
-
-                } else {
-                    PrimeFaces.current().executeScript("Swal.fire({"
-                            + "  title: 'Error!',"
-                            + "  text: 'Usuario no Registrado',"
-                            + "  icon: 'error',"
-                            + "  confirmButtonText: 'Intentar de nuevo'"
-                            + "})");
-                }
-            } else {
-                PrimeFaces.current().executeScript("Swal.fire({"
-                        + "  title: 'Error!',"
-                        + "  text: 'El usuario ya existe en el sistema',"
-                        + "  icon: 'error',"
-                        + "  confirmButtonText: 'Ingresar otro usuario'"
-                        + "})");
-            }
-
-        } catch (Exception e) {
-
+        if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
+            PrimeFaces.current().executeScript("Swal.fire({"
+                    + "  title: 'OK!',"
+                    + "  text: 'Usuario Registrado',"
+                    + "  icon: 'success',"
+                    + "  confirmButtonText: 'Aceptar'"
+                    + "})");
+        
+        } else {
+      
+            PrimeFaces.current().executeScript("Swal.fire({"
+                    + "  title: 'Error!',"
+                    + "  text: 'Usuario no Registrado',"
+                    + "  icon: 'error',"
+                    + "  confirmButtonText: 'Intentar de nuevo'"
+                    + "})");
         }
+
+        usuReg = new Usuario();
 
     }
 

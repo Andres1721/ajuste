@@ -3,178 +3,178 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <div class="main">
-            <div class="container-fluid">
-                                <div class="row">
-                    <div class="col-lg-8 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <div align="center">
-                                    <h1>Módulo de Productos</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Elements </a></li>
-                                    <li class="active">Collapse</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                </div>
-                <div class="col-lg-12">
-                    <div class="card alert">
-                        <div class="card-header">
-                            <h4>Registro de Productos</h4>
-                            <div class="card-header-right-icon">
-                                <ul>
-                                    <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <h:form>
-                                    <div class="row left-text-custom">
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="idProveedor" class="left-text-custom">Id Proveedor</label>
-                                                <h:selectOneMenu value="#{gestionProductos.pro.idProveedor}" class="form-control" >
-                                                    <f:selectItem itemValue="11" itemLabel="VistaFlor" />
-                                                </h:selectOneMenu>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="idProducto" class="left-text-custom">Id de Producto</label>
-                                                <h:inputText 
-                                                    value="#{gestionProductos.pro.idProducto}"
-                                                    maxlength="20"
-                                                    required="true"
-                                                    requiredMessage="Ingrese Id Producto"
-                                                    class="form-control" 
-                                                    id="idProducto">
-                                                </h:inputText>
-                                                <h:message for="idProducto" style="color: red"></h:message>
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="Inventario" class="left-text-custom">Id Inventario</label>
-                                                <h:inputText 
-                                                    value="#{gestionProductos.pro.idInventario}"
-                                                    maxlength="20"
-                                                    required="true"
-                                                    requiredMessage="Ingrese Id de Inventario"
-                                                    class="form-control" 
-                                                    id="Inventario">
-                                                </h:inputText>
-                                                <h:message for="Inventario" style="color: red"></h:message>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="nombProducto" class="left-text-custom">Nombre Producto</label>
-                                                <h:inputText 
-                                                    value="#{gestionProductos.pro.nombreProducto}"
-                                                    maxlength="20"
-                                                    required="true"
-                                                    requiredMessage="Ingrese Nombre de Producto"
-                                                    class="form-control" 
-                                                    id="nombProducto">
-                                                </h:inputText>
-                                                <h:message for="nombProducto" style="color: red"></h:message>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-
-                                        </div>
-
-
-
-                                    </div>
-                                    <div class="row left-text-custom">
-                                        <div class="col-md-4">
-
-                                        </div>
-                                        <div class="col-md-4">
-
-                                            <h:commandButton action="#{gestionProductos.crearProducto()}"  class="btn btn-primary" value="Registrar Producto"></h:commandButton>
-                                        </div>
-                                        <div class="col-md-4">
-
-                                        </div>
-                                    </div>
-                                </h:form>
-                            </div>
-                        </div>
-                    </div>
+        <h:body> 
+            <div class="main">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <h4>Listado de productos </h4>
-                                    <div class="card-header-right-icon">  </div>
+                        <div class="col-lg-8 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <div align="center">
+                                        <h1>Módulo de Productos</h1>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <table class="table table-responsive table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>Id Producto</th>
-                                                <th>Id Inventario</th>
-                                                <th>Nombre Producto</th>
-                                                <th>Nombre Proveedor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-4 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">Dashboard</a></li>
+                                        <li><a href="#">Elements </a></li>
+                                        <li class="active">Collapse</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>Registro de Productos</h4>
+                                <div class="card-header-right-icon">
+                                    <ul>
+                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <h:form>
+                                        <div class="row left-text-custom">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="idProveedor" class="left-text-custom">Id Proveedor</label>
+                                                    <h:selectOneMenu value="#{gestionProductos.pro.idProveedor}" class="form-control" >
+                                                        <f:selectItem itemValue="11" itemLabel="VistaFlor" />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="idProducto" class="left-text-custom">Id de Producto</label>
+                                                    <h:inputText 
+                                                        value="#{gestionProductos.pro.idProducto}"
+                                                        maxlength="20"
+                                                        required="true"
+                                                        requiredMessage="Ingrese Id Producto"
+                                                        class="form-control" 
+                                                        id="idProducto">
+                                                    </h:inputText>
+                                                    <h:message for="idProducto" style="color: red"></h:message>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="Inventario" class="left-text-custom">Id Inventario</label>
+                                                    <h:inputText 
+                                                        value="#{gestionProductos.pro.idInventario}"
+                                                        maxlength="20"
+                                                        required="true"
+                                                        requiredMessage="Ingrese Id de Inventario"
+                                                        class="form-control" 
+                                                        id="Inventario">
+                                                    </h:inputText>
+                                                    <h:message for="Inventario" style="color: red"></h:message>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nombProducto" class="left-text-custom">Nombre Producto</label>
+                                                    <h:inputText 
+                                                        value="#{gestionProductos.pro.nombreProducto}"
+                                                        maxlength="20"
+                                                        required="true"
+                                                        requiredMessage="Ingrese Nombre de Producto"
+                                                        class="form-control" 
+                                                        id="nombProducto">
+                                                    </h:inputText>
+                                                    <h:message for="nombProducto" style="color: red"></h:message>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="row left-text-custom">
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                <h:commandButton action="#{gestionProductos.crearProducto()}"  class="btn btn-primary" value="Registrar Producto"></h:commandButton>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header">
+                                        <h4>Listado de productos </h4>
+                                        <div class="card-header-right-icon">  </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-responsive table-hover ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id Producto</th>
+                                                    <th>Id Inventario</th>
+                                                    <th>Nombre Producto</th>
+                                                    <th>Nombre Proveedor</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
-                                                <c:forEach items="#{gestionProductos.todosProductos()}"   var ="objVa">
-                                                    <tr>
-                                                        <td>
-                                                            #{objVa.idProducto}
-                                                        </td>
-                                                        <td>
-                                                            #{objVa.idInventario}
-                                                        </td>
-                                                        <td>
-                                                            #{objVa.nombreProducto}
-                                                        </td>
-                                                        <td>
-                                                            #{objVa.idProveedor.razonSocialProveedor}
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                <tbody>
+                                                    <c:forEach items="#{gestionProductos.todosProductos()}"   var ="objVa">
+                                                        <tr>
+                                                            <td>
+                                                                #{objVa.idProducto}
+                                                            </td>
+                                                            <td>
+                                                                #{objVa.idInventario}
+                                                            </td>
+                                                            <td>
+                                                                #{objVa.nombreProducto}
+                                                            </td>
+                                                            <td>
+                                                                #{objVa.idProveedor.razonSocialProveedor}
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
                                             </tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div><!-- /# card -->
-                        </div><!-- /# column -->
-                    </div><!-- /# row -->
-                </div><!-- /# main content -->
+                                        </table>
+                                    </div>
+                                </div><!-- /# card -->
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+                    </div><!-- /# main content -->
+                </div>
             </div>
-        </div>
+        </h:body>
     </ui:composition>
 </html>
 
