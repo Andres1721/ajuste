@@ -10,15 +10,28 @@ import edu.sena.entity.ajuste3.Usuario;
 import edu.sena.facade.ajuste3.RolFacadeLocal;
 import edu.sena.facade.ajuste3.UsuarioFacadeLocal;
 import edu.sena.utilidad.Ajuste3.Mail;
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -44,6 +57,8 @@ public class gestionUsuario implements Serializable {
     private String claveIn = "";
     private List<Rol> todosLosRoles = new ArrayList<>();
     private List<Rol> rolesSinAsignar = new ArrayList<>();
+    @Resource(lookup = "java:app/ajuste3")
+    DataSource dataSource;
 
     public gestionUsuario() {
     }
@@ -149,6 +164,28 @@ public class gestionUsuario implements Serializable {
                     + "})");
         }
 
+    }
+        public void descargaReporte() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+        try {
+            File jasper = new File(context.getRealPath("/reportes/usuarios.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), new HashMap(), dataSource.getConnection());
+            
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=usuarios.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+        } catch (IOException | SQLException | JRException e) {
+            System.out.println("gestionUsuario.descargaReporte() " + e.getMessage());
+
+        }
     }
 
     public void cambiarEstado(Usuario usu) {

@@ -1,248 +1,254 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <h:body>
-            <form>
-                <div class="main-content">
+        <h:body> 
+            <div class="main">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card alert">
-                                <div class="invoice-edit">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="control-bar">
-                                                <label for="config_date">Ordenes de Venta COLAFF
-                                                </label>
-                                                <div class="pull-right dib">
-                                                    <a class="bg-success" href="javascript:window.print()">Print</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-5">
-                                            <div class="me">
-                                                <p>
-                                                    <strong>Emisor:COLAF S.A.S</strong>
-                                                    <br> Nit:9005211874</br>
-                                                    <strong> Representante Legal:</strong><br>Sandra Hernández</br>
-                                                    <strong> Teléfono:</strong><br>9041193</br>
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <!--.col-->
-                                        <div class="col-lg-10">
-                                            <div class="form-group">
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="idCliente" class="left-text-custom">Cliente</label>
-                                                        <h:selectOneMenu value="#{gestionProductos.pro.idProveedor}"
-                                                                         class="form-control">
-                                                            <f:selectItem itemValue="arin" itemLabel="Arin" />
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="form-group">
-                                                        <label for="idVenta" class="left-text-custom">Id Venta</label>
-                                                        <h:inputText value="#{gestionProductos.pro.idProducto}" maxlength="20"
-                                                                     required="true" requiredMessage="Ingrese Id Venta"
-                                                                     class="form-control" id="idProducto">
-                                                        </h:inputText>
-                                                        <h:message for="idVenta" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="fechaventa" class="left-text-custom">Fecha de Venta</label>
-                                                        <h:inputText value="#{gestionProductos.pro.idProducto}" maxlength="20"
-                                                                     required="true" requiredMessage="Ingrese Valor Total"
-                                                                     class="form-control" id="idProducto">
-                                                        </h:inputText>
-                                                        <h:message for="fechaventa" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="vencimiento" class="left-text-custom">Fecha de
-                                                            Vencimiento</label>
-                                                        <h:inputText value="#{gestionProductos.pro.idProducto}" maxlength="20"
-                                                                     required="true" requiredMessage="Ingrese echa de Vencimiento"
-                                                                     class="form-control" id="idProducto">
-                                                        </h:inputText>
-                                                        <h:message for="vencimiento" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="estadoCompra" class="left-text-custom">Estado Compra</label>
-                                                        <h:selectOneMenu value="#{gestionProductos.pro.idProveedor}"
-                                                                         class="form-control">
-                                                            <f:selectItem itemValue="1" itemLabel="PAGADA" />
-                                                            <f:selectItem itemValue="2" itemLabel="CANCELADA" />
-                                                            <f:selectItem itemValue="3" itemLabel="DEVOLUCION" />
-                                                            <f:selectItem itemValue="4" itemLabel="PENDIENTE DE PAGO" />
-
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="formaPago" class="left-text-custom">Forma de Pago</label>
-                                                        <h:selectOneMenu value="#{gestionProductos.pro.idProveedor}"
-                                                                         class="form-control">
-                                                            <f:selectItem itemValue="1" itemLabel="Tarjeta de Crédito" />
-                                                            <f:selectItem itemValue="2" itemLabel="Tarjeta de Débito" />
-                                                            <f:selectItem itemValue="3" itemLabel="Pago en Efectivo" />
-                                                            <f:selectItem itemValue="4" itemLabel="Pago en Bancos" />
-
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="total" class="left-text-custom">Valor Total</label>
-                                                        <h:inputText value="#{gestionProductos.pro.idProducto}" maxlength="20"
-                                                                     required="true" requiredMessage="Ingrese Fecha de Venta"
-                                                                     class="form-control" id="idProducto">
-                                                        </h:inputText>
-                                                        <h:message for="total" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Observaciones</label>
-                                                        <h:inputTextarea class="form-control" id="observaciones">
-                                                        </h:inputTextarea>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    Web: <a href="http://htmlcooker.com">www.htmlcooker.com</a>
-                                                    <br> Mail: <a
-                                                            href="mailto:hello@htmlcooker.com">hello@htmlcooker.com</a></br>
-                                                    Tel: +8801629599859
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row m-t-30">
-                                        <!--.col-->
-                                        <div class="col-lg-6">
-                                            <h3 class="bill">Detalle de Venta</h3>
-                                        </div>
-                                        <!--.col-->
-                                        <div class="col-lg-6 text-right">
-                                            <p class="details">
-                                                Date of invoice:
-                                                <input type="text" class="datePicker" />
-                                                <br> Invoice number: </br>
-                                                <input type="text" value="1241" />
-                                                <br> Payable to:</br>
-                                                <input class="twoweeks" type="text" />
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="invoicelist-body">
-                                        <table class="table table-responsive">
-                                            <thead>
-                                                <!--                                            <tr>
-                                                                                                <th>Id Detalle</th>
-                                                                                                <th>Id Venta</th>
-                                                                                                <th>Id Producto</th>
-                                                                                                <th>Precio Unitario</th>
-                                                                                                <th>Cantidad Producto</th>
-                                                                                                <th>Valor Total</th>
-                                                                                                <th>Observaciones</th>
-                                                                                            </tr>-->
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Description</th>
-                                                    <th class="daterelated">Date</th>
-                                                    <th class="w10pr">Number</th>
-                                                    <th class="w12pr">Rate</th>
-                                                    <th class="taxrelated">VAT</th>
-                                                    <th class="w10pr">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a class="control removeRow" href="#">x</a> <span> T Shirt</span></td>
-                                                    <td><span>Black and White</span></td>
-                                                    <td class="daterelated"><span>Date</span></td>
-                                                    <td class="amount">
-                                                        <input type="text" value="1" />
-                                                    </td>
-                                                    <td class="rate">
-                                                        <input type="text" value="60" />
-                                                    </td>
-                                                    <td class="tax taxrelated"></td>
-                                                    <td class="sum"></td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                        <a class="control newRow" href="#">+ New ROW</a>
-                                    </div>
-                                    <!--.invoice-body-->
-                                    <div class="invoicelist-footer">
-                                        <table>
-                                            <tr class="taxrelated">
-                                                <td>VAT:</td>
-                                                <td id="total_tax"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Total:</strong></td>
-                                                <td id="total_price"></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div class="note">
-                                        <h2 class="dib">Remark:</h2>
-                                        <p class="dib"> Lorem Ipsum dummy text</p>
-                                    </div>
-                                    <!--.note-->
-
-                                    <div class="row">
-                                        <div class="col-lg-12 text-center m-t-50">
-                                            <p class="notaxrelated pull-left">Pursuant to § 19 UStG, the invoice does not
-                                                include
-                                                any VAT</p>
-                                            <p class="notdaterelated pull-right">
-                                                All right reaserved, Copyright @2017
-                                            </p>
-                                        </div>
+                        <div class="col-lg-8 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <div align="center">
+                                        <h1>Módulo de Ventas</h1>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-4 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">Dashboard</a></li>
+                                        <li><a href="#">Elements </a></li>
+                                        <li class="active">Collapse</li>
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
                         <!-- /# column -->
                     </div>
-                    <!-- /# row -->
-                </div>
-            </form>
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>Registro de Productos</h4>
+
+                                <div class="card-header-right-icon">
+                                    <ul>
+                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <h:form>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formIdUsuario">Ingrese su Id</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.usuReg.usuarioid}"
+                                                maxlength="20"
+                                                required="true"
+                                                requiredMessage="Por favor Ingrese su Id"
+                                                class="form-control" 
+                                                id="formIdUsuario">
+
+                                            </h:inputText>
+                                            <h:message for="formIdUsuario" style="color: red"></h:message>
+                                        </div>
+                                        <div class="form-group">                                        
+                                            <h:outputLabel for="fmrTd">Tipo de documento</h:outputLabel>
+                                            <h:selectOneMenu value="#{gestionUsuario.usuReg.tipoDocumento}" class="form-control" id="fmrTd">
+                                                <f:selectItem itemValue="CC" itemLabel="Registro Civil" />
+                                                <f:selectItem itemValue="12" itemLabel="Tarjeta de identidad" />
+                                                <f:selectItem itemValue="13" itemLabel="Cédula de ciudadanía" />
+                                                <f:selectItem itemValue="14" itemLabel="Certificado de Registraduría" />
+                                                <f:selectItem itemValue="15" itemLabel="Tipo de documento que identifica una sucesión" />
+                                                <f:selectItem itemValue="21" itemLabel="Tarjeta de extranjería" />
+                                                <f:selectItem itemValue="22" itemLabel="Cédula de extranjería" />
+                                                <f:selectItem itemValue="31" itemLabel="NIT" />
+                                                <f:selectItem itemValue="33" itemLabel="Identificación de extranjeros diferente al NI" />
+                                                <f:selectItem itemValue="41" itemLabel="Pasaporte" />
+                                                <f:selectItem itemValue="42" itemLabel="Documento de identificación extranjero" />
+                                                <f:selectItem itemValue="43" itemLabel="Sin identificación del exterior" />
+                                                <f:selectItem itemValue="44" itemLabel="Documento de Identificación extranjero Person" />
+                                                <f:selectItem itemValue="46" itemLabel="Carnét Diplomático" />
+
+
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formIdentificacion">Ingrese su número de Identificación</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.usuReg.numerodocumento}"
+                                                maxlength="20"
+                                                required="true"
+                                                requiredMessage="Por favor ingrese el número de identificación"
+                                                class="form-control" 
+                                                id="formIdentificacion">
+
+                                            </h:inputText>
+                                            <h:message for="formIdentificacion" style="color: red"></h:message>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formNombre">Ingrese su Nombre</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.usuReg.nombres}"
+                                                maxlength="20"
+                                                required="true"
+                                                requiredMessage="Por favor ingrese su Nombre"
+                                                class="form-control" 
+                                                id="formNombre">
+
+                                            </h:inputText>
+                                            <h:message for="formNombre" style="color: red"></h:message>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formApellido">Ingrese su Apellido</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.usuReg.apellidos}"
+                                                maxlength="20"
+                                                required="true"
+                                                requiredMessage="Por favor ingrese su Apellido"
+                                                class="form-control" 
+                                                id="formApellido">
+
+                                            </h:inputText>
+                                            <h:message for="formApellido" style="color: red"></h:message>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formCorreo">Ingrese su Correo</h:outputLabel>
+                                            <h:inputText 
+                                                value="#{gestionUsuario.usuReg.correoelectronico}"
+                                                maxlength="20"
+                                                required="true"
+                                                requiredMessage="Por favor ingrese el Correo"
+                                                class="form-control" 
+                                                id="formCorreo">
+
+                                            </h:inputText>
+                                            <h:message for="formCorreo" style="color: red"></h:message>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputLabel for="formPassword">Contraseña</h:outputLabel>
+                                            <h:inputSecret 
+                                                value="#{gestionUsuario.usuReg.clave}"
+                                                maxlength="30"
+                                                required="true"
+                                                requiredMessage="Por favor ingrese la contraseña"
+                                                class="form-control" id="formPassword">
+                                            </h:inputSecret>
+                                            <h:message for="formPassword" style="color: red"></h:message>
+                                        </div>
+                                        
+                                        
+                                        <h:commandButton action="#{gestionUsuario.registrarUsuario()}" class="btn btn-primary" value="Registrar"></h:commandButton>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header">
+                                        <h4>Reportes de Productos en las Ventas</h4>
+                                        <div class="card-header-right-icon">  </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                            <p>Este reporte muestra los productos más vendidos</p>
+                                            <h:commandButton action="#{ordenVenta.descargaReporte()}"  class="btn btn-danger" value="Generar Reporte PDF"></h:commandButton>
+                                        </h:form>
+                                    </div>
+                                </div><!-- /# card -->
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header">
+                                        <h4>Reportes de Productos en las Ventas</h4>
+                                        <div class="card-header-right-icon">  </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                            <p>Este reporte muestra los productos más vendidos</p>
+                                            <h:commandButton action="#{ordenVenta.descReporteXlsx()}"  class="btn btn-success" value="Generar Reporte Excel"></h:commandButton>
+                                        </h:form>
+                                    </div>
+                                </div><!-- /# card -->
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header">
+                                        <h4>Cargue Masivo de Ventas</h4>
+                                        <div class="card-header-right-icon">  </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                            <p style="color: red">Por favor cargar en formato  CSV</p>
+                                            <h:commandButton action="#{ordenVenta.archivoCsv()}"  class="btn btn-warning" value="Selecccionar Archivo"></h:commandButton>
+                                        </h:form>
+                                    </div>
+                                </div><!-- /# card -->
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+                        
+                    </div><!-- /# main content -->
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>Listado de Ordenes de  Venta</h4>
+                                <div class="card-header-right-icon">
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-responsive table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Numero de Orden</th>
+                                            <th>Fecha</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Direccion</th>
+                                            <th>Correo</th>
+                                            <th>Cantidad</th>
+                                            <th>Descripcion</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="#{ordenVenta.listarVentas()}"   var ="objVa">
+                                            <tr>
+                                                <td>#{objVa.idVentas}</td>
+                                                <td>#{objVa.fecha}</td>
+                                                <td>#{objVa.nombres}</td>
+                                                <td>#{objVa.apellidos}</td>
+                                                <td>#{objVa.direccion}</td>
+                                                <td>#{objVa.correo}</td>
+                                                <td>#{objVa.catidadArticulos}</td>
+                                                <td>#{objVa.descripcion}</td>
+                                                <td>#{objVa.precioTotal}</td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!-- /# column -->
+                </div><!-- /# main content -->
+            </div>
+
         </h:body>
     </ui:composition>
-
 </html>
+

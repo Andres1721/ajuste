@@ -35,7 +35,6 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
 
     @Override
     public boolean registrarUsuario(Usuario usuReg) {
-        System.out.println("Entro a registrar");
 
         try {
             Query q = em.createNativeQuery("INSERT INTO tblusuario ( usuarioid,tipoDocumento,numerodocumento,nombres, apellidos, correoelectronico,  clave) VALUES (?,?, ?, ?, ?, ?, ?);");

@@ -29,6 +29,8 @@ public interface VariedadFacadeLocal {
     List<Variedad> findRange(int[] range);
 
     int count();
+
     public boolean registrarVariedad(Variedad variedades);
-    
+
+    public Variedad validarVariedad(String tipo);
 }

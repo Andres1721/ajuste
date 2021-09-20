@@ -9,6 +9,7 @@ import edu.sena.entity.ajuste3.Cliente;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,15 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
         super(Cliente.class);
     }
     
+
+    
+    public void crearCliente(Cliente  cli){
+                    Query q = em.createNativeQuery("INSERT INTO tblusuario ( idCliente,razonSocial,telefonoCliente,emailCliente, digitoVerificacion, idEstadoCliente) VALUES (?,?, ?, ?, ?, ?);");
+                    
+ 
+
+    
+                    
+    }
+
 }

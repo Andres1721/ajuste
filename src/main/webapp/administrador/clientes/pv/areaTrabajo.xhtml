@@ -7,193 +7,191 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
         <h:body>
-        <div class="main">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <div align="center">
-                                    <h1>Módulo de Cliente  Proveedor</h1>
+            <div class="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <div align="center">
+                                        <h1>Módulo de Cliente  Proveedor</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 p-0">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">Dashboard</a></li>
+                                        <li class="active">Basic Form</li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li class="active">Basic Form</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main-content">
-                    <div class="row">
-                    </div><!-- /# row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card alert">
-                                <div class="card-header alert alert-info">
-                                    <h4>Registro de Clientes</h4>
-                                    <div class="card-header-right-icon">
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="basic-form alert alert-info">
-                                        <h:form>
-                                            <div class="row left-text-custom">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="cliente" class="left-text-custom">Id
-                                                            Cliente</label>
-                                                        <h:inputText value="#{gestionVariedades.varReg.idVariedades}"
-                                                                     maxlength="20" required="true"
-                                                                     requiredMessage="Ingrese Id Cliente" class="form-control"
-                                                                     id="cliente">
-
-                                                        </h:inputText>
-                                                        <h:message for="cliente" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="razon" class="left-text-custom">Razón Social
-                                                        </label>
-                                                        <h:inputText value="#{gestionVariedades.varReg.color}"
-                                                                     maxlength="20" required="true"
-                                                                     requiredMessage="Ingrese Razón Social " class="form-control"
-                                                                     id="razon">
-                                                        </h:inputText>
-                                                        <h:message for="razon" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="telefono" class="left-text-custom">Teléfono
-                                                            Cliente</label>
-                                                        <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
-                                                                     maxlength="20" required="true"
-                                                                     requiredMessage="Ingrese el teléfono" class="form-control"
-                                                                     id="telefono">
-                                                        </h:inputText>
-                                                        <h:message for="telefono" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="email" class="left-text-custom">Email</label>
-                                                        <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
-                                                                     maxlength="20" required="true"
-                                                                     requiredMessage="Ingrese email" class="form-control"
-                                                                     id="email">
-                                                        </h:inputText>
-                                                        <h:message for="email" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="digito" class="left-text-custom">Dígito Verificación</label>
-                                                        <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
-                                                                     maxlength="20" required="true"
-                                                                     requiredMessage="Ingrese dígito Verificación" class="form-control"
-                                                                     id="digito">
-                                                        </h:inputText>
-                                                        <h:message for="digito" style="color: red"></h:message>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <h:outputLabel for="fmrTd">Estado del Cliente</h:outputLabel>
-                                                        <h:selectOneMenu value="#{gestionUsuario.usuReg.tipoDocumento}"
-                                                                         class="form-control" id="fmrTd">
-                                                            <f:selectItem itemValue="11" itemLabel="Activo" />
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div align="right">
-                                                        <img src="images/logo.png" class="avatar" alt="logo"  width="150" height="100" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                </div>
-
-                                            </div>
-                                            <div class="row left-text-custom">
-                                                <div class="col-md-4">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                     class="btn btn-primary" value="Registrar Cliente">
-                                                    </h:commandButton>
-                                                </div>
-
-                                            </div>
-
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- /# column -->
-                    </div><!-- /# row -->
-
                     <div class="main-content">
-                        <div class="row"> 
-                            <h:form>
-                                <c:forEach items="#{gestionProveedores.listarProveedores()}" var="objVa">
-                                    <div class="col-lg-3">
-                                        <div class="card alert btn btn-outline m-b-10 m-l-5">
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="product-3-img">
-                                                        <img src="assets/images/product_1/image-8-226x223.jpg" alt="" />
+                        <div class="row">
+                        </div><!-- /# row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header alert alert-info">
+                                        <h4>Registro de Clientes</h4>
+                                        <div class="card-header-right-icon">
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="basic-form alert alert-info">
+                                            <h:form>
+                                                <div class="row left-text-custom">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="cliente" class="left-text-custom">Id
+                                                                Cliente</label>
+                                                            <h:inputText value="#{gestionVariedades.varReg.idVariedades}"
+                                                                         maxlength="20" required="true"
+                                                                         requiredMessage="Ingrese Id Cliente" class="form-control"
+                                                                         id="cliente">
+                                                            </h:inputText>
+                                                            <h:message for="cliente" style="color: red"></h:message>
+                                                        </div>
                                                     </div>
-                                                </div>                
-                                                <div class="col-lg-12 ">
-                                                    <div class="product_details_3">
-                                                        <div class="product_name">
-                                                            <h4>#{objVa.razonSocialProveedor}</h4>
-                                                        </div>
-                                                        <div class="product_des">
-                                                            <p> Nit: #{objVa.idProveedor}</p>
-                                                            <p> Tipo de documento:
-                                                                #{objVa.idTipoDocumento.idDescripTipoDoc}</p>
-                                                            <p> Télefono: #{objVa.telefonoProveedor}</p>
-                                                            <p> Email: #{objVa.emailProveedor}</p>
-                                                        </div>
-                                                        <div class="prdt_add_to_cart">
-                                                            
-                                                            <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                             class="btn btn-info btn-outline btn-rounded m-b-10 m-l-5" value="Editar Proveedor">
-                                                            </h:commandButton>
-                                                            <br> </br>                                             
 
-                                                            <div class="prdt_add_to_cart">
-                                                                <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                                 class="btn btn-danger btn-outline btn-rounded m-b-10 m-l-5" value="Eliminar Porveedor">
-                                                                </h:commandButton>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="razon" class="left-text-custom">Razón Social
+                                                            </label>
+                                                            <h:inputText value="#{gestionVariedades.varReg.color}"
+                                                                         maxlength="20" required="true"
+                                                                         requiredMessage="Ingrese Razón Social " class="form-control"
+                                                                         id="razon">
+                                                            </h:inputText>
+                                                            <h:message for="razon" style="color: red"></h:message>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="telefono" class="left-text-custom">Teléfono
+                                                                Cliente</label>
+                                                            <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                                         maxlength="20" required="true"
+                                                                         requiredMessage="Ingrese el teléfono" class="form-control"
+                                                                         id="telefono">
+                                                            </h:inputText>
+                                                            <h:message for="telefono" style="color: red"></h:message>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="email" class="left-text-custom">Email</label>
+                                                            <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                                         maxlength="20" required="true"
+                                                                         requiredMessage="Ingrese email" class="form-control"
+                                                                         id="email">
+                                                            </h:inputText>
+                                                            <h:message for="email" style="color: red"></h:message>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="digito" class="left-text-custom">Dígito Verificación</label>
+                                                            <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                                         maxlength="20" required="true"
+                                                                         requiredMessage="Ingrese dígito Verificación" class="form-control"
+                                                                         id="digito">
+                                                            </h:inputText>
+                                                            <h:message for="digito" style="color: red"></h:message>
+                                                        </div>
+                                                    </div>
+                                                    <h:form>
+                                                        <h:outputLabel for="estado" value=" Estado Cliente"></h:outputLabel>
+                                                        <h:selectOneMenu value="#{gestionClientes.estado}" id="estado">
+                                                            <f:selectItems itemValue="#{doc.idEstadoCliente}"  itemLabel="#{doc.idDescripEstadoCliente}" var="doc" value="#{gestionClientes.estados}"></f:selectItems>
+                                                        </h:selectOneMenu>
+                                                    </h:form> 
+
+
+                                                    <div class="col-md-4">
+                                                        <div align="right">
+                                                            <img src="images/logo.png" class="avatar" alt="logo"  width="150" height="100" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    </div>
+
+                                                </div>
+                                                <div class="row left-text-custom">
+                                                    <div class="col-md-4">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                                         class="btn btn-primary" value="Registrar Cliente">
+                                                        </h:commandButton>
+                                                    </div>
+
+                                                </div>
+
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+
+                        <div class="main-content">
+                            <div class="row"> 
+                                <h:form>
+                                    <c:forEach items="#{gestionProveedores.listarProveedores()}" var="objVa">
+                                        <div class="col-lg-3">
+                                            <div class="card alert btn btn-outline m-b-10 m-l-5">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="product-3-img">
+                                                            <img src="assets/images/product_1/image-8-226x223.jpg" alt="" />
+                                                        </div>
+                                                    </div>                
+                                                    <div class="col-lg-12 ">
+                                                        <div class="product_details_3">
+                                                            <div class="product_name">
+                                                                <h4>#{objVa.razonSocialProveedor}</h4>
                                                             </div>
+                                                            <div class="product_des">
+                                                                <p> Nit: #{objVa.idProveedor}</p>
+                                                                <p> Tipo de documento:
+                                                                    #{objVa.idTipoDocumento.idDescripTipoDoc}</p>
+                                                                <p> Télefono: #{objVa.telefonoProveedor}</p>
+                                                                <p> Email: #{objVa.emailProveedor}</p>
+                                                            </div>
+                                                            <div class="prdt_add_to_cart">
+
+                                                                <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                                                 class="btn btn-info btn-outline btn-rounded m-b-10 m-l-5" value="Editar Proveedor">
+                                                                </h:commandButton>
+                                                                <br> </br>                                             
+
+                                                                <div class="prdt_add_to_cart">
+                                                                    <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                                                     class="btn btn-danger btn-outline btn-rounded m-b-10 m-l-5" value="Eliminar Porveedor">
+                                                                    </h:commandButton>
+                                                                </div>
+                                                            </div>
+
+
                                                         </div>
-
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div><!-- /# card -->
-                                    </div><!-- /# column -->
-                                </c:forEach>
-                            </h:form>
-                        </div><!-- /# row -->
-                        
+                                            </div><!-- /# card -->
+                                        </div><!-- /# column -->
+                                    </c:forEach>
+                                </h:form>
+                            </div><!-- /# row -->
+
+                        </div><!-- /# main content -->
                     </div><!-- /# main content -->
-                </div><!-- /# main content -->
-            </div><!-- /# container-fluid -->
-        </div><!-- /# main -->
+                </div><!-- /# container-fluid -->
+            </div><!-- /# main -->
         </h:body>
     </ui:composition>
 </html>

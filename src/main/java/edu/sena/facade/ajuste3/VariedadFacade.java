@@ -8,6 +8,7 @@ package edu.sena.facade.ajuste3;
 import edu.sena.entity.ajuste3.Variedad;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,6 +47,24 @@ public class VariedadFacade extends AbstractFacade<Variedad> implements Variedad
         } catch (Exception e) {
             System.out.println("ERROR ::registrarVariedad -->" + e.getMessage());
             return FALSE;
+        }
+
+    }
+    
+    
+    @Override
+    public Variedad validarVariedad(String tip) {
+        try {
+            Query q = em.createQuery("SELECT v FROM Variedad v WHERE v.nombreVariedad LIKE CONCAT('%',:tip,'%')");
+            q.setParameter("tip", tip);
+            List<Variedad> listaV = q.getResultList();
+            if (listaV.isEmpty()) {
+                return null;
+            } else {
+                return listaV.get(0);
+            }
+        } catch (Exception e) {
+            return null;
         }
 
     }

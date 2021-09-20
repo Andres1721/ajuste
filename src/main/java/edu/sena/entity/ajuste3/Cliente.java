@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
     private String telefonoCliente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 11)
+    @Size(min = 1, max = 90)
     @Column(name = "emailCliente")
     private String emailCliente;
     @Basic(optional = false)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+        <div>TODO write content</div>
+
+        <h:form>
+            <h:outputLabel for="estado" value=" Estado Cliente"></h:outputLabel>
+                 <h:selectOneMenu value="#{gestionClientes.estado}" id="estado">
+                     <f:selectItems itemValue="#{doc.idEstadoCliente}"  itemLabel="#{doc.idDescripEstadoCliente}" var="estado" value="#{gestionClientes.estados}"></f:selectItems>
+            </h:selectOneMenu>
+        </h:form>                                              
+    </h:body>
+</html>
