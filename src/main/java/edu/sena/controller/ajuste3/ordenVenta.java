@@ -11,6 +11,7 @@ import edu.sena.facade.ajuste3.FormaPagoFacadeLocal;
 import edu.sena.facade.ajuste3.OrdenVentaFacadeLocal;
 import edu.sena.facade.ajuste3.VariedadFacadeLocal;
 import edu.sena.facade.ajuste3.VentasFacadeLocal;
+import edu.sena.utilidad.Ajuste3.MailMasivo;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -310,6 +312,38 @@ public void descReporteXlsx() {
         }
 
     }
+    
+    //Mail Masivo
+    public void detalleOrden(Ventas ventas) {
+
+        for (Iterator<Ventas> iterator = ventasFacadeLocal.findAll().iterator(); iterator.hasNext();) {
+            Ventas next = iterator.next();
+
+            try {
+                MailMasivo.detalleOrd(ventas,next);
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Correo enviado!',"
+                        + "  text: 'Port favor verifique su bandeja de entrada',"
+                        + "  icon: 'success',"
+                        + "  confirmButtonText: 'Ok'"
+                        + "})");
+            } catch (Exception e) {
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Error!',"
+                        + "  text: 'No se puede realizar esta peticion',"
+                        + "  icon: 'error',"
+                        + "  confirmButtonText: 'Por favor intente mas tarde'"
+                        + "})");
+
+            }
+
+        }
+    }
+    
+    
+    
+    
+    
 
     public int getCompra() {
         return compra;

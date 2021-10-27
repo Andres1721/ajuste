@@ -146,8 +146,8 @@
                                             </h:inputSecret>
                                             <h:message for="formPassword" style="color: red"></h:message>
                                         </div>
-                                        
-                                        
+
+
                                         <h:commandButton action="#{gestionUsuario.registrarUsuario()}" class="btn btn-primary" value="Registrar"></h:commandButton>
                                     </h:form>
                                 </div>
@@ -194,6 +194,22 @@
                                     </div>
                                     <div class="card-body">
                                         <h:form>
+                                            <p style="color: red"></p>
+                                            <h:commandButton action="#{ordenVenta.archivoCsv()}"  class="btn btn-dark" value="Selecccionar Archivo"></h:commandButton>
+                                        </h:form>
+                                    </div>
+                                </div><!-- /# card -->
+                            </div><!-- /# column -->
+                        </div><!-- /# row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card alert">
+                                    <div class="card-header">
+                                        <h4>Envío Masivo de Correos</h4>
+                                        <div class="card-header-right-icon">  </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
                                             <p style="color: red">Por favor cargar en formato  CSV</p>
                                             <h:commandButton action="#{ordenVenta.archivoCsv()}"  class="btn btn-warning" value="Selecccionar Archivo"></h:commandButton>
                                         </h:form>
@@ -201,7 +217,7 @@
                                 </div><!-- /# card -->
                             </div><!-- /# column -->
                         </div><!-- /# row -->
-                        
+
                     </div><!-- /# main content -->
                     <div class="col-lg-12">
                         <div class="card alert">
@@ -238,6 +254,12 @@
                                                 <td>#{objVa.catidadArticulos}</td>
                                                 <td>#{objVa.descripcion}</td>
                                                 <td>#{objVa.precioTotal}</td>
+                                                <td>
+                                                    <h:form>
+                                                        <p style="color: red">ENVIO MASIVO DE FACTURAS</p>
+                                                        <h:commandButton action="#{ordenVenta.detalleOrden(objVa)}"  class="btn btn-warning" value="Enviar la Venta"></h:commandButton>
+                                                    </h:form>
+                                                </td>    
                                             </tr>
                                         </c:forEach>
                                     </tbody>

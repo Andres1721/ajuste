@@ -3,22 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <div class="main">
+        <h:body>        
+            <div class="main">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-8 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <div align="center">
-                                    <h1>Módulo de Proveedores</h1>
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <div align="center">
+                                        <h1>Módulo de Proveedores</h1>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                         <div class="col-lg-4 p-0">
                             <div class="page-header">
@@ -50,29 +49,11 @@
                                         <div class="basic-form">
                                             <h:form>
                                                 <div class="form-group">
-                                                    <h:outputLabel for="fmrTd">Tipo de documento</h:outputLabel>
-                                                    <h:selectOneMenu value="#{gestionUsuario.usuReg.tipoDocumento}"
+                                                    <h:outputLabel for="tipo">Tipo de documento</h:outputLabel>
+                                                    <h:selectOneMenu value="#{gestionProveedores.tipoDocumento}" id="tipo"
                                                                      class="form-control" id="fmrTd">
-                                                        <f:selectItem itemValue="11" itemLabel="Registro Civil" />
-                                                        <f:selectItem itemValue="12" itemLabel="Tarjeta de identidad" />
-                                                        <f:selectItem itemValue="13" itemLabel="Cédula de ciudadanía" />
-                                                        <f:selectItem itemValue="14"
-                                                                      itemLabel="Certificado de Registraduría" />
-                                                        <f:selectItem itemValue="15"
-                                                                      itemLabel="Tipo de documento que identifica una sucesión" />
-                                                        <f:selectItem itemValue="21" itemLabel="Tarjeta de extranjería" />
-                                                        <f:selectItem itemValue="22" itemLabel="Cédula de extranjería" />
-                                                        <f:selectItem itemValue="31" itemLabel="NIT" />
-                                                        <f:selectItem itemValue="33"
-                                                                      itemLabel="Identificación de extranjeros diferente al NI" />
-                                                        <f:selectItem itemValue="41" itemLabel="Pasaporte" />
-                                                        <f:selectItem itemValue="42"
-                                                                      itemLabel="Documento de identificación extranjero" />
-                                                        <f:selectItem itemValue="43"
-                                                                      itemLabel="Sin identificación del exterior" />
-                                                        <f:selectItem itemValue="44"
-                                                                      itemLabel="Documento de Identificación extranjero Person" />
-                                                        <f:selectItem itemValue="46" itemLabel="Carnét Diplomático" />
+                                                        <f:selectItems itemValue="#{doc.idTipoDocumento}"  itemLabel="#{doc.idDescripTipoDoc}" var="doc" value="#{gestionProveedores.tiposDocumento}"></f:selectItems>
+
                                                     </h:selectOneMenu>
                                                 </div>
 
@@ -81,7 +62,7 @@
                                                         <div class="form-group">
                                                             <label for="proveedor" class="left-text-custom">Id
                                                                 Proveedor</label>
-                                                            <h:inputText value="#{gestionVariedades.varReg.idVariedades}"
+                                                            <h:inputText value="#{gestionProveedores.pro.idProveedor}"
                                                                          maxlength="20" required="true"
                                                                          requiredMessage="Ingrese Id Proveedor" class="form-control"
                                                                          id="proveedor">
@@ -95,7 +76,7 @@
                                                         <div class="form-group">
                                                             <label for="razon" class="left-text-custom">Razón Social
                                                                 Proveedor</label>
-                                                            <h:inputText value="#{gestionVariedades.varReg.color}"
+                                                            <h:inputText value="#{gestionProveedores.pro.razonSocialProveedor}"
                                                                          maxlength="20" required="true"
                                                                          requiredMessage="Ingrese Razón Social " class="form-control"
                                                                          id="razon">
@@ -107,7 +88,7 @@
                                                         <div class="form-group">
                                                             <label for="telefono" class="left-text-custom">Teléfono
                                                                 Proveedor</label>
-                                                            <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                            <h:inputText value="#{gestionProveedores.pro.telefonoProveedor}"
                                                                          maxlength="20" required="true"
                                                                          requiredMessage="Ingrese el teléfono" class="form-control"
                                                                          id="telefono">
@@ -118,7 +99,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="email" class="left-text-custom">Email</label>
-                                                            <h:inputText value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                            <h:inputText value="#{gestionProveedores.pro.emailProveedor}"
                                                                          maxlength="20" required="true"
                                                                          requiredMessage="Ingrese email" class="form-control"
                                                                          id="email">
@@ -132,7 +113,7 @@
                                                     <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                        <h:commandButton action="#{gestionProveedores.registrarProveedor()}"
                                                                          class="btn btn-primary" value="Registrar Proveedor">
                                                         </h:commandButton>
                                                     </div>
@@ -175,11 +156,11 @@
                                                                 <h:commandButton action="#{gestionVariedades.crearVariedad()}"
                                                                                  class="btn btn-primary" value="Editar Proveedor">
                                                                 </h:commandButton>
-                                                            <br> </br>                                             
+                                                                <br> </br>                                             
 
                                                                 <div class="prdt_add_to_cart">
                                                                     <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                                     class="btn btn-primary" value="Eliminar Porveedor">
+                                                                                     class="btn btn-primary" value="Eliminar Proveedor">
                                                                     </h:commandButton>
                                                                 </div>
                                                             </div>
@@ -197,6 +178,6 @@
                     </div><!-- /# main content -->
                 </div><!-- /# container-fluid -->
             </div><!-- /# main -->
+        </h:body>
     </ui:composition>
 </html>
-

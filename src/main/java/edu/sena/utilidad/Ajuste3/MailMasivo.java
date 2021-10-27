@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.sena.utilidad.Ajuste3;
 
+import edu.sena.entity.ajuste3.Ventas;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,15 +10,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- *
- * @author ai00214
- */
-public abstract class Mail {
+public abstract class MailMasivo {
 
-    public static void recuperarClaves(String nombreUsuario,String correoPara, String claveNueva) {
-
-        final String usuario = "hibissoft@gmail.com";
+    public static void detalleOrd(Ventas ordenesVenta, Ventas enviarVentas) {
+                final String usuario = "hibissoft@gmail.com";
         final String clave = "adsi2141449";
 
         Properties props = new Properties();
@@ -43,28 +34,34 @@ public abstract class Mail {
         try {
             MimeMessage mensage = new MimeMessage(session);
             mensage.setFrom(new InternetAddress(usuario));
-            mensage.addRecipient(Message.RecipientType.TO, new InternetAddress(correoPara));
-            mensage.setSubject("Recordatorio de claves");
+            mensage.addRecipient(Message.RecipientType.TO, new InternetAddress(enviarVentas.getCorreo()));
+            mensage.setSubject("Sus pedido es:");
             mensage.setContent("<center> "
-                    + "<img src='https://thumbs.dreamstime.com/b/protecci%C3%B3n-de-la-clave-de-la-seguridad-de-la-contrase%C3%B1a-de-los-datos-de-usuario-79323179.jpg' width='100px' height='100px' >"
+                    + "<img src='https://i.imgur.com/fPeKUxG.jpg' width='200px' height='200px' >"
                     + "</center>"
                     + "<br/>"
-                    + "<h1> Hola, " + nombreUsuario + " </h1>"
+                    + "<h1> Hola:" + ordenesVenta.getNombres() + " </h1>"
                     + "<br/>"
-                    + "Su clave de ingreso al sistema es : " + claveNueva,
+                    + "<h4>Los detalles de su pedido son los siguientes:</h4> "
+                    + "<table style = 'width:100%'>"
+                    + "<tr>"
+                    + "<td>Número de orden</td>"
+                    + "<td>Fecha</td>"
+                    + "<td>Valor unitario</td>"
+                    + "<td>Detalle</td>"
+                    + "<td>Cantidad</td>"
+                    + "<td>Valor Total</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>" + ordenesVenta.getDireccion() + "</td>"
+                    + "<td>" + ordenesVenta.getPrecioTotal() + "</td>"
+                    + "</tr>"
+                    + "</table >",
                     "text/html");
             Transport.send(mensage);
-
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-
         }
 
     }
-    
-    
-    
-    
-    
-
 }
