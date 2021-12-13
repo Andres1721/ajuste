@@ -4,277 +4,247 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+
+        <f:event listener="#{gestionUsuario.validarUsuarioActivo()}" type="preRenderView"></f:event>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </h:head>
     <ui:composition>
-        <f:event listener="#{gestionUsuario.validarUsuarioActivo()}" type="preRenderView" ></f:event>
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
 
-        <div class="header">
-            <div class="pull-left">
-                <div class="logo">
-                    <a href="quienesSomos.xhtml">
-                        <font color="white" size="4.5"> HibisSoft<img id="logoImg" src="#{request.contextPath}/logo/trebol.png" data-logo_big="logo/trebol.png" data-logo_small="logo/trebol.png" alt="H" /></font>
-                    </a>
-                </div>
-            </div>
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="../../forms/index.html" class="logo d-flex align-items-center">
+                    <img src="#{request.contextPath}/assets/img/logo.png" alt=""/>
+                    <span class="d-none d-lg-block">HibisSoft</span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
 
-            <div class="pull-right p-r-15">
-                <ul>
-                    <li class="header-icon dib"><i class="ti-bell"></i>
-                        <div class="drop-down">
-                            <div class="dropdown-content-heading">
-                                <span class="text-left">Recent Notifications</span>
-                            </div>
-                            <div class="dropdown-content-body">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/3.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Mr. Jane</div>
-                                                <div class="notification-text">5 members joined today </div>
-                                            </div>
-                                        </a>
-                                    </li>
+            <div class="search-bar">
+                <form class="search-form d-flex align-items-center" method="POST" action="#">
+                    <input type="text" name="query" placeholder="Search" title="Enter search keyword"/>
+                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+                </form>
+            </div><!-- End Search Bar -->
 
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/3.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Mariam</div>
-                                                <div class="notification-text">likes a photo of you</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/3.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Tasnim</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/3.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Jane Roe</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="text-center">
-                                        <a href="#" class="more-link">See All</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="header-icon dib"><i class="ti-email"></i>
-                        <div class="drop-down">
-                            <div class="dropdown-content-heading">
-                                <span class="text-left">2 New Messages</span>
-                                <a href="app-email.html"><i class="ti-pencil-alt pull-right"></i></a>
-                            </div>
-                            <div class="dropdown-content-body">
-                                <ul>
-                                    <li class="notification-unread">
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/1.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Jane Doe</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="notification-unread">
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/2.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Jane Roe</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/3.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Jane Doe</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="pull-left m-r-10 avatar-img" src="#{request.contextPath}/assets/images/avatar/2.jpg" alt="" />
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                <div class="notification-heading">Jane Roe</div>
-                                                <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="text-center">
-                                        <a href="#" class="more-link">See All</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="header-icon dib chat-sidebar-icon"><i class="ti-comments"></i></li>
-                    <li class="header-icon dib"><img class="avatar-img" src="#{request.contextPath}/assets/images/avatar/1.jpg" alt="" /> <span class="user-avatar">Jane <i class="ti-angle-down f-s-10"></i></span>
-                        <div class="drop-down dropdown-profile">
-                            <div class="dropdown-content-heading">
-                                <span class="text-left">Upgrade Now</span>
-                                <p class="trial-day">30 Days Trail</p>
-                            </div>
-                            <div class="dropdown-content-body">
-                                <ul>
-                                    <li><a href="#"><i class="ti-user"></i> <span>Profile</span></a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> <span>My Balance</span></a></li>
-                                    <li><a href="#"><i class="ti-write"></i> <span>My Task</span></a></li>
-                                    <li><a href="#"><i class="ti-calendar"></i> <span>My Calender</span></a></li>
-                                    <li><a href="#"><i class="ti-email"></i> <span>Inbox</span></a></li>
-                                    <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
-                                    <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
-                                    <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                                    <li>
-                                        <a>
-                                            <h:form>
-                                                <h:commandLink action="#{gestionUsuario.cerraSesion()}" class="ti-power-off">
-                                                </h:commandLink>
-                                            </h:form>
-                                            <span>
-                                                Cerrar Sesión
-                                            </span>   
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+            <nav class="header-nav ms-auto">
+                <ul class="d-flex align-items-center">
+
+                    <li class="nav-item d-block d-lg-none">
+                        <a class="nav-link nav-icon search-bar-toggle " href="#">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li><!-- End Search Icon-->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge bg-primary badge-number">4</span>
+                        </a><!-- End Notification Icon -->
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                            <li class="dropdown-header">
+                                You have 4 new notifications
+                                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="notification-item">
+                                <i class="bi bi-exclamation-circle text-warning"></i>
+                                <div>
+                                    <h4>Lorem Ipsum</h4>
+                                    <p>Quae dolorem earum veritatis oditseno</p>
+                                    <p>30 min. ago</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="notification-item">
+                                <i class="bi bi-x-circle text-danger"></i>
+                                <div>
+                                    <h4>Atque rerum nesciunt</h4>
+                                    <p>Quae dolorem earum veritatis oditseno</p>
+                                    <p>1 hr. ago</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="notification-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <div>
+                                    <h4>Sit rerum fuga</h4>
+                                    <p>Quae dolorem earum veritatis oditseno</p>
+                                    <p>2 hrs. ago</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="notification-item">
+                                <i class="bi bi-info-circle text-primary"></i>
+                                <div>
+                                    <h4>Dicta reprehenderit</h4>
+                                    <p>Quae dolorem earum veritatis oditseno</p>
+                                    <p>4 hrs. ago</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="#">Show all notifications</a>
+                            </li>
+
+                        </ul><!-- End Notification Dropdown Items -->
+
+                    </li><!-- End Notification Nav -->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-chat-left-text"></i>
+                            <span class="badge bg-success badge-number">3</span>
+                        </a><!-- End Messages Icon -->
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                            <li class="dropdown-header">
+                                You have 3 new messages
+                                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="message-item">
+                                <a href="#">
+                                    <img src="#{request.contextPath}/assets/img/messages-1.jpg" alt="" class="rounded-circle"/>
+                                    <div>
+                                        <h4>Maria Hudson</h4>
+                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                        <p>4 hrs. ago</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="message-item">
+                                <a href="#">
+                                    <img src="#{request.contextPath}/assets/img/messages-2.jpg" alt="" class="rounded-circle"/>
+                                    <div>
+                                        <h4>Anna Nelson</h4>
+                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                        <p>6 hrs. ago</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="message-item">
+                                <a href="#">
+                                    <img src="#{request.contextPath}/assets/img/messages-3.jpg" alt="" class="rounded-circle"/>
+                                    <div>
+                                        <h4>David Muldon</h4>
+                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                        <p>8 hrs. ago</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li class="dropdown-footer">
+                                <a href="#">Show all messages</a>
+                            </li>
+
+                        </ul><!-- End Messages Dropdown Items -->
+
+                    </li><!-- End Messages Nav -->
+
+                    <li class="nav-item dropdown pe-3">
+
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <img src="#{request.contextPath}/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"/>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        </a><!-- End Profile Iamge Icon -->
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li class="dropdown-header">
+                                <h6>Kevin Anderson</h6>
+                                <span>Web Designer</span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                    <i class="bi bi-person"></i>
+                                    <span>My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                    <i class="bi bi-gear"></i>
+                                    <span>Account Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>Need Help?</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li>
+                                <a>
+                                    <!--<i class="bi bi-box-arrow-right"></i>-->
+                                    <!--<span>Sign Out</span>-->
+                                    <h:form>
+                                        <h:commandLink action="#{gestionUsuario.cerraSesion()}"   class="dropdown-item"><i class="bi bi-box-arrow-righ"></i>Cerra Sesión</h:commandLink>
+                                    </h:form>
+
+                                </a>
+                            </li>
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
+
                 </ul>
-            </div>
-        </div>
-        <div class="chat-sidebar">
-            <!-- BEGIN chat -->
-            <div id="mmc-chat" class="color-default">
-                <!-- BEGIN CHAT BOX -->
-                <div class="chat-box">
-                    <!-- BEGIN CHAT BOXS -->
-                    <ul class="boxs"></ul>
-                    <!-- END CHAT BOXS -->
-                    <div class="icons-set">
-                        <div class="stickers">
-                            <div class="had-container">
-                                <div class="row">
+            </nav><!-- End Icons Navigation -->
 
-                                    <div id="tab1" class="s12 tab-content">
-                                        <ul>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                            <li><img src="#{request.contextPath}/assets/images/1.png" alt="" /></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END CHAT BOX -->
-                <!-- BEGIN SIDEBAR -->
-                <div id="sidebar" class="right scroll">
-                    <div class="had-container">
-                        <!-- BEGIN USERS -->
-                        <div class="users">
-                            <ul class="user-list">
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="1" data-status="online" data-username="Rufat Askerov" data-position="left"  data-filter-name="rufat askerov">
-                                    <!-- BEGIN USER IMAGE-->
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
-                                    </div>
-                                    <!-- END USER IMAGE-->
-                                    <!-- BEGIN USERNAME-->
-                                    <span class="user-name">Rufat Askerov</span>
-                                    <span class="user-show"></span>
-                                    <!-- END USERNAME-->
-                                </li>
-                                <!-- END USER-->
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="3" data-status="online" data-username="Alice" data-position="left"  data-filter-name="alice">
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Alice" />
-                                    </div>
-                                    <span class="user-name">Alice</span>
-                                    <span class="user-show"></span>
-                                </li>
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="7" data-status="offline" data-username="Michael Scofield" data-position="left"  data-filter-name="michael scofield">
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Michael Scofield" />
-                                    </div>
-                                    <span class="user-name">Michael Scofield</span>
-                                    <span class="user-show"></span>
-                                </li>
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="5" data-status="online" data-username="Irina Shayk" data-position="left" data-filter-name="irina shayk">
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Irina Shayk" />
-                                    </div>
-                                    <span class="user-name">Irina Shayk</span>
-                                    <span class="user-show"></span>
-                                </li>
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="6" data-status="offline" data-username="Sara Tancredi" data-position="left" data-filter-name="sara tancredi">
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Sara Tancredi" />
-                                    </div>
-                                    <span class="user-name">Sara Tancredi</span>
-                                    <span class="user-show"></span>
-                                </li>
-                                <!-- BEGIN USER-->
-                                <li class="user-tooltip" data-id="7" data-status="offline" data-username="Jane" data-position="left"  data-filter-name="Jane">
-                                    <div class="user-image">
-                                        <img src="#{request.contextPath}/assets/images/avatar/1.jpg" class="avatar" alt="Jane" />
-                                    </div>
-                                    <span class="user-name">Jane</span>
-                                    <span class="user-show"></span>
-                                </li>
-                            </ul>
-                            <div class="chat-user-search">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Search" />
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END USERS -->
-                    </div>
-                </div>
-                <!-- END SIDEBAR -->
-            </div>
-            <!-- END chat -->
-        </div>
-        <!-- END chat Sidebar-->
-
+        </header><!-- End Header -->
     </ui:composition>
 </html>
 

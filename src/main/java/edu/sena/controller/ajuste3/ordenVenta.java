@@ -1,11 +1,13 @@
 package edu.sena.controller.ajuste3;
 
 import com.opencsv.CSVReader;
+import edu.sena.entity.ajuste3.Cliente;
 import edu.sena.entity.ajuste3.EstadoCompra;
 import edu.sena.entity.ajuste3.FormaPago;
 import edu.sena.entity.ajuste3.Usuario;
 import edu.sena.entity.ajuste3.Variedad;
 import edu.sena.entity.ajuste3.Ventas;
+import edu.sena.facade.ajuste3.ClienteFacadeLocal;
 import edu.sena.facade.ajuste3.EstadoCompraFacadeLocal;
 import edu.sena.facade.ajuste3.FormaPagoFacadeLocal;
 import edu.sena.facade.ajuste3.OrdenVentaFacadeLocal;
@@ -55,6 +57,8 @@ import org.primefaces.PrimeFaces;
 @Named(value = "ordenVenta")
 @SessionScoped
 public class ordenVenta implements Serializable {
+    @EJB
+    ClienteFacadeLocal clienteFacadeLocal;
 
     @EJB
     EstadoCompraFacadeLocal estadoCompraFacadeLocal;
@@ -67,19 +71,36 @@ public class ordenVenta implements Serializable {
     @Resource(lookup = "java:app/ajuste3")
     DataSource dataSource;
 
+    @PostConstruct
+        public void cargaPostConst() {
+        formaPago.addAll(formaPagoFacadeLocal.findAll());
+        estadoCompra.addAll(estadoCompraFacadeLocal.findAll());
+        clientes.addAll(clienteFacadeLocal.findAll());
+    }
+    
+    
     private int compra;
-    private int pago;
     private Part archivoCsv;
     private Ventas ventaReg = new Ventas();
     private Ventas temVenta = new Ventas();
+
+    private List formaPago = new ArrayList<>();
+    private int idFormaPago;
+    private String descFormaPago;
     
+    private List estadoCompra =new ArrayList<>();
+    private int idEstadoCompra;
+    private String descEstadoCompra;
     
+    private List clientes = new ArrayList<>();
+    private int idEstadoCliente;
+    private String razonSocial;
+
     /**
      * Creates a new instance of ordenVentas
      */
 //    private List<FormaPago> listPago = new ArrayList<>();
 //    private List<EstadoCompra> listEstado = new ArrayList<>();
-
 //    @PostConstruct
 //    public void post() {
 //
@@ -90,6 +111,31 @@ public class ordenVenta implements Serializable {
     public ordenVenta() {
     }
 
+    public List<FormaPago> listarFormaPago() {
+        formaPago = formaPagoFacadeLocal.findAll();
+        return formaPago;
+    }
+    public List<EstadoCompra> listarEstadoCompra() {
+        estadoCompra = estadoCompraFacadeLocal.findAll();
+        return estadoCompra;
+    }
+    public List <Cliente> listarClientes (){
+        clientes=clienteFacadeLocal.findAll();
+        return  clientes;
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public List<Ventas> listarVentas() {
         return ventasFacadeLocal.findAll();
     }
@@ -215,8 +261,7 @@ public class ordenVenta implements Serializable {
 //        PrimeFaces.current().executeScript("document.getElementById('formReset').click()");
 //    }
 
-
-public void descReporteXlsx() {
+    public void descReporteXlsx() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) context.getRequest();
@@ -312,7 +357,7 @@ public void descReporteXlsx() {
         }
 
     }
-    
+
     //Mail Masivo
     public void detalleOrden(Ventas ventas) {
 
@@ -320,7 +365,7 @@ public void descReporteXlsx() {
             Ventas next = iterator.next();
 
             try {
-                MailMasivo.detalleOrd(ventas,next);
+                MailMasivo.detalleOrd(ventas, next);
                 PrimeFaces.current().executeScript("Swal.fire({"
                         + "  title: 'Correo enviado!',"
                         + "  text: 'Port favor verifique su bandeja de entrada',"
@@ -339,11 +384,6 @@ public void descReporteXlsx() {
 
         }
     }
-    
-    
-    
-    
-    
 
     public int getCompra() {
         return compra;
@@ -360,15 +400,6 @@ public void descReporteXlsx() {
 //    public void setListEstado(List<EstadoCompra> listEstado) {
 //        this.listEstado = listEstado;
 //    }
-
-    public int getPago() {
-        return pago;
-    }
-
-    public void setPago(int pago) {
-        this.pago = pago;
-    }
-
 //    public List<FormaPago> getListPago() {
 //        return listPago;
 //    }
@@ -376,7 +407,6 @@ public void descReporteXlsx() {
 //    public void setListPago(List<FormaPago> listPago) {
 //        this.listPago = listPago;
 //    }
-
     public Part getArchivoCsv() {
         return archivoCsv;
     }
@@ -399,6 +429,80 @@ public void descReporteXlsx() {
 
     public void setTemVenta(Ventas temVenta) {
         this.temVenta = temVenta;
+    }
+
+    public List getFormaPago() {
+        return formaPago;
+    }
+
+    public void setFormaPago(List formaPago) {
+        this.formaPago = formaPago;
+    }
+
+    public int getIdFormaPago() {
+        return idFormaPago;
+    }
+
+    public void setIdFormaPago(int idFormaPago) {
+        this.idFormaPago = idFormaPago;
+    }
+
+    public String getDescFormaPago() {
+        return descFormaPago;
+    }
+
+    public void setDescFormaPago(String descFormaPago) {
+        this.descFormaPago = descFormaPago;
+    }
+
+    public int getIdEstadoCompra() {
+        return idEstadoCompra;
+    }
+
+    public void setIdEstadoCompra(int idEstadoCompra) {
+        this.idEstadoCompra = idEstadoCompra;
+    }
+
+
+
+    public List getEstadoCompra() {
+        return estadoCompra;
+    }
+
+    public void setEstadoCompra(List estadoCompra) {
+        this.estadoCompra = estadoCompra;
+    }
+
+    public String getDescEstadoCompra() {
+        return descEstadoCompra;
+    }
+
+    public void setDescEstadoCompra(String descEstadoCompra) {
+        this.descEstadoCompra = descEstadoCompra;
+    }
+
+    public List getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List clientes) {
+        this.clientes = clientes;
+    }
+
+    public int getIdEstadoCliente() {
+        return idEstadoCliente;
+    }
+
+    public void setIdEstadoCliente(int idEstadoCliente) {
+        this.idEstadoCliente = idEstadoCliente;
+    }
+
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
 
 }

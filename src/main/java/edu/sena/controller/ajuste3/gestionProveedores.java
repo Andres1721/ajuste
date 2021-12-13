@@ -50,8 +50,6 @@ public class gestionProveedores implements Serializable {
     public void registrarProveedor() {
         Documento docu = documentoFacadeLocal.find(tipoDocumento);
         pro.setIdTipoDocumento(docu);
-        
-        
         proveedorFacadeLocal.create(pro);
 
         PrimeFaces.current().executeScript("Swal.fire({"
@@ -60,6 +58,7 @@ public class gestionProveedores implements Serializable {
                 + "  icon: 'success',"
                 + "  confirmButtonText: 'Aceptar'"
                 + "})");
+        pro = new Proveedor();
 
     }
 
@@ -88,11 +87,3 @@ public class gestionProveedores implements Serializable {
     }
 
 }
-
-//List  <Pais> listapais= new ArrayList<>();
-//List  <listciudad> listapais= new ArrayList<>();
-//Encapsular las dos listas
-//
-//@postConstructor
-//public  void 
-

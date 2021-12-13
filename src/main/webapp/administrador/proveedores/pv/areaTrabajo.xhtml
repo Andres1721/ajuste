@@ -2,185 +2,186 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <h:body>        
-            <div class="main">
-                <div class="container-fluid">
+        <h:body>
+            <main id="main" class="main">
+
+                <div class="pagetitle">
+                    <h1>Módulo de Proveedores</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item active">Validation</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+
+                <section class="section">
                     <div class="row">
-                        <div class="col-lg-8 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <div align="center">
-                                        <h1>Módulo de Proveedores</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <ol class="breadcrumb text-right">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li class="active">Basic Form</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-content">
-                        <div class="row">
-                        </div><!-- /# row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Registro de Proveedores</h4>
-                                        <div class="card-header-right-icon">
-                                            <ul>
-                                                <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                        <div class="col-lg-2">
 
-                                            </ul>
+                        </div>
+                        <div class="col-lg-8">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Registro de Proveedores</h5>
+                                    <p>Sección para registrar los  Proveedores de flores<code> Por favor no olvidar diligenciar los datos de forma correcta.</code></p>
+                                    <!-- Browser Default Validation -->
+                                    <h:form class="row g-3">
+                                        <div class="col-md-12">
+                                            <h:outputLabel for="tipoDocumento" class="form-label">Tipo de Documento</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:selectOneMenu value="#{gestionProveedores.tipoDocumento}" id="estado" class="form-control">
+                                                    <f:selectItems itemValue="#{doc.idTipoDocumento}"  itemLabel="#{doc.idDescripTipoDoc}" var="doc" value="#{gestionProveedores.tiposDocumento}"></f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+
                                         </div>
-                                    </div>
+                                        <div class="col-md-4">
+                                            <h:outputLabel for="proveedor" class="form-label">Id Proveedor</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionProveedores.pro.idProveedor}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese Id de proveedor"
+                                                    class="form-control" 
+                                                    id="proveedor">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="proveedor" style="color: red"></h:message>
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h:outputLabel for="razon" class="form-label">Razón Social
+                                                Proveedor</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionProveedores.pro.razonSocialProveedor}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese Razón Social"
+                                                    class="form-control" 
+                                                    id="razon">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="razon" style="color: red"></h:message>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h:outputLabel for="telefono" class="form-label">Teléfono
+                                                Proveedor</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionProveedores.pro.telefonoProveedor}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese Teléfono"
+                                                    class="form-control" 
+                                                    id="telefono">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="telefono" style="color: red"></h:message>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h:outputLabel for="email" class="form-label">Correo Electronico
+                                            </h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionProveedores.pro.emailProveedor}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese Correo Electronico"
+                                                    class="form-control" 
+                                                    id="email">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="email" style="color: red"></h:message>
+                                        </div>
+
+                                        <h:commandButton action="#{gestionProveedores.registrarProveedor()}"
+                                                         class="btn btn-success" value="Registrar Proveedor">
+                                        </h:commandButton>
+                                    </h:form>
+                                    <!-- End Browser Default Validation -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
                                     <div class="card-body">
-                                        <div class="basic-form">
-                                            <h:form>
-                                          
-                                                <div class="row left-text-custom"> 
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                        <h:outputLabel for="estado" value=" Tipo de Documento" class="form-group"></h:outputLabel>
-                                                        <h:selectOneMenu value="#{gestionProveedores.tipoDocumento}" id="estado" class="form-control">
-                                                                <f:selectItems itemValue="#{doc.idTipoDocumento}"  itemLabel="#{doc.idDescripTipoDoc}" var="doc" value="#{gestionProveedores.tiposDocumento}"></f:selectItems>
-                                                        </h:selectOneMenu>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                                <div class="row left-text-custom">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="proveedor" class="left-text-custom">Id
-                                                                Proveedor</label>
-                                                            <h:inputText value="#{gestionProveedores.pro.idProveedor}"
-                                                                         maxlength="20" required="true"
-                                                                         requiredMessage="Ingrese Id Proveedor" class="form-control"
-                                                                         id="proveedor">
+                                        <h5 class="card-title">Reporte de Proveedores</h5>   
+                                        <h:form>
+                                            <p>Este reporte muestra los proveedores que estan en el sistema</p>
+                                            <h:commandButton action="#{gestionProductos.descargaReporte()}"  class="btn btn-danger" value="Generar Reporte PDF"></h:commandButton>
+                                        </h:form> 
 
-                                                            </h:inputText>
-                                                            <h:message for="proveedor" style="color: red"></h:message>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="razon" class="left-text-custom">Razón Social
-                                                                Proveedor</label>
-                                                            <h:inputText value="#{gestionProveedores.pro.razonSocialProveedor}"
-                                                                         maxlength="20" required="true"
-                                                                         requiredMessage="Ingrese Razón Social " class="form-control"
-                                                                         id="razon">
-                                                            </h:inputText>
-                                                            <h:message for="razon" style="color: red"></h:message>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="telefono" class="left-text-custom">Teléfono
-                                                                Proveedor</label>
-                                                            <h:inputText value="#{gestionProveedores.pro.telefonoProveedor}"
-                                                                         maxlength="20" required="true"
-                                                                         requiredMessage="Ingrese el teléfono" class="form-control"
-                                                                         id="telefono">
-                                                            </h:inputText>
-                                                            <h:message for="telefono" style="color: red"></h:message>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email" class="left-text-custom">Email</label>
-                                                            <h:inputText value="#{gestionProveedores.pro.emailProveedor}"
-                                                                         maxlength="20" required="true"
-                                                                         requiredMessage="Ingrese email" class="form-control"
-                                                                         id="email">
-                                                            </h:inputText>
-                                                            <h:message for="email" style="color: red"></h:message>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row left-text-custom">
-                                                    <div class="col-md-4">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <h:commandButton action="#{gestionProveedores.registrarProveedor()}"
-                                                                         class="btn btn-primary" value="Registrar Proveedor">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reporte de Proveedores</h5>   
+                                        <h:form>
+                                            <p>Este reporte muestra los proveedores que estan en el sistema</p>
+                                            <h:commandButton action="#{gestionProductos.descargaReporte()}"  class="btn btn-success" value="Generar Reporte Excel"></h:commandButton>
+                                        </h:form> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h:form>
+                            <div class="row">
+                                <c:forEach items="#{gestionProveedores.listarProveedores()}" var="objVa"> 
+                                    <div class="col-lg-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">#{objVa.razonSocialProveedor}</h4>  
+                                                <p> Nit: #{objVa.idProveedor}</p>
+                                                <p> T de documento:
+                                                    #{objVa.idTipoDocumento.idDescripTipoDoc}</p>
+                                                <p> Télefono: #{objVa.telefonoProveedor}</p>
+                                                <p> Email: #{objVa.emailProveedor}</p>
+                                                <h:form>
+                                                    <div>
+                                                        <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                                         class="btn btn-success" value="Editar Proveedor">
                                                         </h:commandButton>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                    </div>
-                                                </div>
+                                                </h:form> 
+                                                <br></br>
+                                                <h:form>
+                                                    <div>
+                                                        <h:commandButton action="#{gestionVariedades.crearVariedad()}"
+                                                                         class="btn btn-danger" value="Eliminar Proveedor">
+                                                        </h:commandButton>
+                                                    </div> 
+                                                </h:form> 
 
-                                            </h:form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
+                                </c:forEach>
+                            </div>
 
-                        <div class="main-content">
-                            <div class="row">
-                                <h:form>
-                                    <c:forEach items="#{gestionProveedores.listarProveedores()}" var="objVa">
-                                        <div class="col-lg-6">
-                                            <div class="card alert">
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <div class="product-3-img">
-                                                            <img src="assets/images/product_1/image-8-226x223.jpg" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="product_details_3">
-                                                            <div class="product_name">
-                                                                <h4>#{objVa.razonSocialProveedor}</h4>
-                                                            </div>
-                                                            <div class="product_des">
-                                                                <p> Nit: #{objVa.idProveedor}</p>
-                                                                <p> Tipo de documento:
-                                                                    #{objVa.idTipoDocumento.idDescripTipoDoc}</p>
-                                                                <p> Télefono: #{objVa.telefonoProveedor}</p>
-                                                                <p> Email: #{objVa.emailProveedor}</p>
-                                                            </div>
-                                                            <div class="prdt_add_to_cart">
-                                                                <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                                 class="btn btn-primary" value="Editar Proveedor">
-                                                                </h:commandButton>
-                                                                <br> </br>                                             
+                        </h:form>
+                    </div>
+                </section>
 
-                                                                <div class="prdt_add_to_cart">
-                                                                    <h:commandButton action="#{gestionVariedades.crearVariedad()}"
-                                                                                     class="btn btn-primary" value="Eliminar Proveedor">
-                                                                    </h:commandButton>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- /# card -->
-                                        </div><!-- /# column -->
-                                    </c:forEach>
-                                </h:form>
-                            </div><!-- /# row -->
-                        </div><!-- /# main content -->
-                    </div><!-- /# main content -->
-                </div><!-- /# container-fluid -->
-            </div><!-- /# main -->
+            </main><!-- End #main -->
         </h:body>
     </ui:composition>
+
 </html>
+

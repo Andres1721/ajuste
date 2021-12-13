@@ -7,16 +7,24 @@
     <ui:composition template="../WEB-INF/template/tema.xhtml">
 
         <ui:define name="areaSuperior">
-            <ui:include src="tv/areaSuperior.xhtml"/>            
+            <!--<ui:include src="tv/areaSuperior.xhtml"/>-->            
+            <ui:include src="../usuario/tv/areaSuperior.xhtml"/>            
         </ui:define>
 
         <ui:define name="menuVertical">
             <ui:include src="tv/menuVertical.xhtml"/>            
+            <!--<ui:include src="../WEB-INF/template/menuVertical.xhtml"/>-->            
+
         </ui:define>
 
         <ui:define name="areaTrabajo">
+            <!--<ui:include src="../WEB-INF/template/areaTrabajo.xhtml"/>-->            
             <ui:include src="pv/areaTrabajo.xhtml"/>            
         </ui:define>
+
+        <ui:insert name="pieDePagina">
+            <ui:include src="../../WEB-INF/template/pieDePagina.xhtml"/>
+        </ui:insert>
 
     </ui:composition>
 

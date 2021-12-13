@@ -2,490 +2,426 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <div class="main">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <div align="center">
+        <h:body>
+            <main id="main" class="main">
 
-                                    <h1>Bienvenidos  a Nuestra Organización </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4 p-0">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Elements </a></li>
-                                    <li class="active">Collapse</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                </div>
-                <!-- /# row -->
-                <div class="main-content">
+                <div class="pagetitle">
+                    <h1>Bienvenidos a Nuestra Organización</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a>Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+
+                <section class="section dashboard">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <div align="center">
-                                        <h4>Quienes Somos</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        COLAFF S.A.S Somos la compañía colombiana con mayor diversidad en productos
-                                        agrícolas de alta calidad para el mercado nacional e internacional, buscando de
-                                        forma constante la sustentabilidad ambiental para nuestros clientes y
-                                        proveedores.
-                                    </p>
-                                    <button class="btn btn-primary m-b-10" data-toggle="collapse"
-                                            data-target="#basic-collapse">Ver mas</button>
 
-                                    <div id="basic-collapse" class="collapse">
-                                        <div class="icon-container">
-                                            <p><strong> <span class="ti-location-pin"></span><span
-                                                        class="icon-name">Ubicación: </span></strong> Facatativa</p>
-                                        </div>
-                                        <div class="icon-container">
-                                            <p><strong> <span class="ti-direction-alt"></span><span
-                                                        class="icon-name">Barrio: </span></strong>Santa Rita</p>
-                                        </div>
-                                        <div class="icon-container">
-                                            <p><strong> <span class="ti-direction"></span><span
-                                                        class="icon-name">Dirección: </span></strong>Calle 36a 21 -26
-                                            </p>
-                                        </div>
-                                        <div class="icon-container">
-                                            <p><strong> <span class="ti-headphone-alt"></span><span
-                                                        class="icon-name">Telefóno: </span></strong>3219755371</p>
-                                        </div>
-                                        <div class="icon-container">
-                                            <p><strong> <span class="ti-key"></span><span class="icon-name">Nit:
-                                                    </span></strong>9005211874</p>
+                        <!-- Left side columns -->
+                        <div class="col-lg-8">
+                            <div class="row">
+
+                                <!-- Sales Card -->
+                                <div class="col-xxl-4 col-md-6">
+                                    <div class="card info-card sales-card">
+
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
                                         </div>
 
-                                        <br> </br>
-                                        <br> </br>
-                                        <br> </br>
-                                        <br> </br>
-                                        <div align="right">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Clientes <span>| Totales</span></h5>
 
-                                            <img src="../images/logo.png" class="avatar" alt="logo"  width="100" height="70" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /# card -->
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card bg-primary">
-                                <div class="card-header">
-                                    <div align="center">
-                                        <h4>Testimonios de Clientes</h4>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div align="justify">
-                                                        <div class="testimonial-text">
-                                                            <i class="fa fa-quote-left"></i> Gracias Colaff por los
-                                                            hermosos productos que venden,sin duda la calidad es unica.
-                                                            ¡Felicitaciones! <i class="fa fa-quote-right"></i>
-                                                        </div>
-                                                        <div align="center">
-                                                            <div class="testimonial-author">Control Flowers</div>
-                                                            <div class="testimonial-author-position">Founder-Ceo.Harry
-                                                                James</div>
-                                                        </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-people"></i>
+                                                </div>
+                                                <h:form>
+                                                    <div class="ps-3">
+                                                        <h6>#{gestionUsuario.cantidadCli}</h6>
+                                                        <!--<span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
+
                                                     </div>
+                                                </h:form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div><!-- End Sales Card -->
+
+                                <!-- Revenue Card -->
+                                <div class="col-xxl-4 col-md-6">
+                                    <div class="card info-card revenue-card">
+
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">Monto <span>| 10 Facturas</span></h5>
+
+                                            <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-currency-dollar"></i>
+                                                </div>
+                                                <div class="ps-3">
+                                                    <h6>#{gestionUsuario.cantidadMonto}</h6>
+                                                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
                                                 </div>
                                             </div>
-                                            <br></br>
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div align="justify">
-                                                        <div class="testimonial-text">
-                                                            <i class="fa fa-quote-left"></i> Empresa que es garantía en
-                                                            el sector floricultor y está dejando una imagen difrente de
-                                                            nuestro país con su calidad de trabajo.<i
-                                                                class="fa fa-quote-right"></i>
-                                                        </div>
-                                                        <div align="center">
-                                                            <div class="testimonial-author">VistaFlor</div>
-                                                            <div class="testimonial-author-position">Founder-Ceo.Joan
-                                                                Kanes</div>
-                                                        </div>
+                                        </div>
+
+                                    </div>
+                                </div><!-- End Revenue Card -->
+
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card customers-card">
+
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">Proveedores <span>| Actuales</span></h5>
+
+                                            <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-people"></i>
+                                                </div>
+                                                <div class="ps-3">
+                                                    <h6>#{gestionUsuario.cantidadProveedores}</h6>
+                                                    <!--<span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>-->
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+
+
+
+                                <!-- Recent Sales -->
+                                <div class="col-12">
+                                    <div class="card recent-sales">
+
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">Agenda de Contactos <span></span></h5>
+
+                                            <table class="table table-borderless datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Contacto</th>
+                                                        <th scope="col">Cargo</th>
+                                                        <th scope="col">Teléfono</th>
+                                                        <th scope="col">Departamento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row"><a href="#">1</a></th>
+                                                        <td>Luis Eduardo Carrillo</td>
+                                                        <td><a href="#" class="text-primary">Gerente General</a></td>
+                                                        <td>3216547498</td>
+                                                        <td><span class="badge bg-info">Gerencia General</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"><a href="#">2</a></th>
+                                                        <td>Sandra Milena Hernández</td>
+                                                        <td><a href="#" class="text-primary">Representante Legal</a></td>
+                                                        <td>3216547475</td>
+                                                        <td><span class="badge bg-info">Gerencia General</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"><a href="#">3</a></th>
+                                                        <td>Catalina Charry</td>
+                                                        <td><a href="#" class="text-primary">Secretaria</a></td>
+                                                        <td>3217487545</td>
+                                                        <td><span class="badge bg-warning">Administración</span></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th scope="row"><a href="#">4</a></th>
+                                                        <td>Andrea Primiciero</td>
+                                                        <td><a href="#" class="text-primary">Auxiliar HSQ</a></td>
+                                                        <td>3214541212</td>
+                                                        <td><span class="badge bg-danger">Seguridad Industrial</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"><a href="#">5</a></th>
+                                                        <td>Jose Gómez</td>
+                                                        <td><a href="#" class="text-primary">Analista de Inventarios</a></td>
+                                                        <td>3217897476</td>
+                                                        <td><span class="badge bg-success">Inventarios</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"><a href="#">6</a></th>
+                                                        <td>Sara Angúlo</td>
+                                                        <td><a href="#" class="text-primary">Analista de Ventas</a></td>
+                                                        <td>3217896547</td>
+                                                        <td><span class="badge bg-dark">Ventas</span></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th scope="row"><a href="#">7</a></th>
+                                                        <td>Patricia Preciado</td>
+                                                        <td><a href="#" class="text-primary">Analista de Clientes Proveedores</a></td>
+                                                        <td>3219759412</td>
+                                                        <td><span class="badge bg-secondary">Clientes</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                </div><!-- End Recent Sales -->
+                            </div>
+                        </div><!-- End Left side columns -->
+
+                        <!-- Right side columns -->
+                        <div class="col-lg-4">
+
+                            <!-- Recent Activity -->
+                            <div class="card">
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Perfil de  #{gestionUsuario.usuLog.nombres}</h5>
+
+                                    <h:form>
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="formIdUsuario" class="col-sm-10 col-form-label">Id</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.usuarioid}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese su Id"
+                                                    class="form-control" 
+                                                    id="formIdUsuario"
+                                                    readonly="true">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="formIdUsuario" style="color: red"></h:message>
+                                        </div>
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="formTipoDocumento" class="col-sm-10 col-form-label">Tipo Documento</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.tipoDocumento}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor ingrese Tipo Documento"
+                                                    class="form-control" 
+                                                    id="formTipoDocumento"
+                                                    readonly="true">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="formTipoDocumento" style="color: red"></h:message>
+                                        </div>
+
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="fromNumeroDocumento" class="col-sm-10 col-form-label">Número Documento</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.numerodocumento}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Número Documento"
+                                                    class="form-control" 
+                                                    id="fromNumeroDocumento"
+                                                    readonly="true">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="fromNumeroDocumento" style="color: red"></h:message>
+                                        </div>
+
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="fromNombres" class="col-sm-10 col-form-label">Nombres</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.nombres}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor ingrese Nombre"
+                                                    class="form-control" 
+                                                    id="fromNombres">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="fromNombres" style="color: red"></h:message>
+                                        </div>
+
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="fromApellidos" class="col-sm-10 col-form-label">Apellidos</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.apellidos}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor ingrese Apellidos"
+                                                    class="form-control" 
+                                                    id="fromApellidos">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="fromApellidos" style="color: red"></h:message>
+                                        </div>
+
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="fromCorreo" class="col-sm-10 col-form-label">Correo</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionUsuario.usuLog.correoelectronico}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor ingrese Correo"
+                                                    class="form-control" 
+                                                    id="fromCorreo">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="fromCorreo" style="color: red"></h:message>
+                                        </div>
+                                        <div  class="row mb-10">
+                                            <h:outputLabel for="fromEstado" class="col-sm-10 col-form-label">Estado del Usuario en el Sistema</h:outputLabel>
+                                            <div class="col-sm-10">
+
+                                                <c:if test="#{gestionUsuario.usuLog.estado}">
+                                                    <div  class="fw-bold text-dark">
+                                                        <h:outputLabel value="ACTIVO"/>
                                                     </div>
-                                                </div>
+                                                </c:if>
+                                                <c:if test="#{!gestionUsuario.usuLog.estado}">
+                                                    <div  class="fw-bold text-dark">
+                                                        <h:outputLabel value="INACTIVO" />
+                                                    </div>
+                                                </c:if>
+                                            </div>
+                                        </div>    
+                                        <br></br>
+                                        <div  class="row mb-10">
+                                            <h:commandButton action="#{gestionUsuario.actualizarMisDatos()}" class="btn btn-primary btn-sm" value="Actualizar datos de Perfil"></h:commandButton>
+                                        </div>
+                                    </h:form>
+
+                                </div>
+                            </div><!-- End Recent Activity -->
+
+
+                            <!-- News & Updates Traffic -->
+                            <div class="card">
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Noticias<span></span></h5>
+
+                                    <div class="news">
+                                        <div class="post-item clearfix">
+                                            <img src="#{request.contextPath}/assets/img/news-1.jpg" alt=""/>
+                                            <h4>Ministerio de Agricultura</h4>
+                                            <div class="text-justify">
+                                                <p>Verificar información en la entidad gubernamental. <a href="https://www.minagricultura.gov.co/paginas/default.aspx" target="_blank">Ministerio de Agricultura</a> </p>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        <div class="post-item clearfix">
+                                            <img src="#{request.contextPath}/assets/img/news-2.jpg" alt=""/>
+                                            <h4>Instituto Colombiano Agropecuario</h4>
+                                            <div class="text-justify"> 
+                                                <p>Revisar información de fitosanitarios  <a href="https://www.ica.gov.co/normatividad" target="_blank">Instituto Colombiano Agropecuario</a> </p>
+                                            </div>
+                                        </div>
+                                        <div class="post-item clearfix">
+                                            <img src="#{request.contextPath}/assets/img/news-4.jpg" alt=""/>
+                                            <h4>Aeropuerto el Dorado</h4>
+                                            <div class="text-justify">
+                                                <p>Para verificar información relacionada a  la carga <a href="https://eldorado.aero/" target="_blank">Aeropuerto el Dorado.</a> </p>
+                                            </div>
+                                        </div>
+                                    </div><!-- End sidebar recent posts-->
+
                                 </div>
-                            </div>
-                            <!-- /# card -->
-                        </div>
+                            </div><!-- End News & Updates -->
+
+                        </div><!-- End Right side columns -->
+
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <div align="center">
-                                        <h4>Nuevos Productos</h4>
-                                    </div>            
-                                </div>
-                                <br></br>
-                                <div class="card-body">
+                </section>
 
-                                    <div align="center">
-                                        <img src="../images/calla.png"  width="230" height="230" />
-                                        <img src="../images/diamante2.png" width="230" height="230" />
-                                        <img src="../images/green ball.png" width="230" height="230" />
-                                        <img src="../images/palma.png" width="230" height="230" />
-                                    </div>
-                                </div>
-
-                            </div><!-- /# card -->
-                        </div>
-                        <div class="col-lg-2">
-
-                        </div>   
-                        <div class="col-lg-6">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <h4>Agenda</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-muted m-b-15"><strong>Note:</strong> A continuación los teléfonos de
-                                        los diferentes departamentos de nuestra organización. </p>
-                                    <br></br>
-                                    <br></br>
-
-                                    <div class="panel-group" id="accordion">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse1">Gerencia General</a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapse1" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Sandra Milena Hernández</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Luis Eduardo Carillo</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Sofía Reyes</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse2">Gerencia
-                                                        Comercial</a></h4>
-                                            </div>
-                                            <div id="collapse2" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Sandra Milena Hernández</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Luis Eduardo Carillo</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Sofía Reyes</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse4">Gerencia
-                                                        Financiera</a></h4>
-                                            </div>
-                                            <div id="collapse4" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Lars Ulrich</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Robert Trujillo</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Jon Bon Jovi</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse6">Contabilidad</a></h4>
-                                            </div>
-                                            <div id="collapse6" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Mick Jagger</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Luis Eduardo Carillo</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Sofía Reyes</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse7">Inventarios</a></h4>
-                                            </div>
-                                            <div id="collapse7" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Dave Grhol</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Phill Collins</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>George Michael's</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse" 
-                                                                           data-parent="#accordion" href="#collapse8">Cosecha</a></h4>
-                                            </div>
-                                            <div id="collapse8" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Ringo Star</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Axel Rose</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Carlos Santana</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse" 
-                                                                           data-parent="#accordion" href="#collapse9">Poscosecha</a></h4>
-                                            </div>
-                                            <div id="collapse9" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Jimmy Page</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Paul Mc Carthey</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Jhon Bon Bones</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title"><a data-toggle="collapse"
-                                                                           data-parent="#accordion" href="#collapse10">Despachos</a></h4>
-                                            </div>
-                                            <div id="collapse10" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <table class="table table-responsive table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Nombre</th>
-                                                                <th>Teléfono</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Robert Plant</td>
-                                                                <td class="color-primary">3229755371</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Pedro Carillo</td>
-                                                                <td class="color-primary">3229755372</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Juan Reyes</td>
-                                                                <td class="color-danger">3229755374</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /# card -->
-                        </div>
-                        <!-- /# column -->
-                    </div>
-                    <!-- /# row -->
-                </div>
-                <!-- /# main content -->
-            </div>
-            <!-- /# container-fluid -->
-        </div>
-               <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+            </main><!-- End #main -->
+        </h:body>
     </ui:composition>
+
 </html>
 

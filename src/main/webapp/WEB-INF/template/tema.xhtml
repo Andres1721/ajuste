@@ -2,100 +2,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
 
     <h:head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script type="text/javascript" src="#{request.contextPath}/dist2/js/site.min.js"></script>
-        <title>HibisSoft</title>
+        <script type="text/javascript" src="dist2/js/site.min.js"></script>
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="-1" />
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-        <!-- ================= Favicon ================== -->
-        <!-- Standard -->
-        <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff"/>
-        <!-- Retina iPad Touch Icon-->
-        <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff"/>
-        <!-- Retina iPhone Touch Icon-->
-        <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff"/>
-        <!-- Standard iPad Touch Icon--> 
-        <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff"/>
-        <!-- Standard iPhone Touch Icon--> 
-        <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff"/>
-        <!-- Basic Page Info -->
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'UA-119386393-1');
-        </script>
-        <!-- Styles -->
-        <link href="#{request.contextPath}/assets/fontAwesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/lib/themify-icons.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/lib/mmc-chat.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/lib/sidebar.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/lib/nixon.css" rel="stylesheet" type="text/css"/>
-        <link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet" type="text/css"/>
+        <title>HibisSoft</title>
+        <meta content="" name="description"/>
+        <meta content="" name="keywords"/>
 
+        <!-- Favicons -->
+        <link href="#{request.contextPath}/assets/img/favicon.png" rel="icon"/>
+        <link href="#{request.contextPath}/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.gstatic.com" rel="preconnect"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+
+        <!-- Vendor CSS Files -->
+        <link href="#{request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/remixicon/remixicon.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/quill/quill.snow.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/quill/quill.bubble.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/assets/vendor/simple-datatables/style.css" rel="stylesheet"/>
+        <!-- Template Main CSS File -->
+        <link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet"/>
+
+        <f:event listener="#{gestionUsuario.validarUsuarioActivo()}" type="preRenderView"></f:event>
+        <!-- =======================================================
+        * Template Name: NiceAdmin - v2.1.0
+        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
     </h:head>
 
     <h:body>
-        <div class="header">
-            <ui:insert name="areaSuperior">
-                <ui:include src="areaSuperior.xhtml"/>
-            </ui:insert>
-        </div>
+        <ui:insert name="areaSuperior">
+            <ui:include src="areaSuperior.xhtml"/>
+        </ui:insert>
         <ui:insert name="menuVertical">
             <ui:include src="menuVertical.xhtml"/>
         </ui:insert>
 
-        <div class="content-wrap">
-            <ui:insert name="areaTrabajo">
-                <ui:include src="areaTrabajo.xhtml"/>
-            </ui:insert>
-        </div>
-        <!-- /# content wrap -->
-        <script src="#{request.contextPath}/assets/js/lib/jquery.min.js"></script>
-        <!-- jquery vendor -->
-        <script src="#{request.contextPath}/assets/js/lib/jquery.nanoscroller.min.js"></script>
-        <!-- nano scroller -->
-        <script src="#{request.contextPath}/assets/js/lib/sidebar.js"></script>
-        <!-- sidebar -->
-        <script src="#{request.contextPath}/assets/js/lib/bootstrap.min.js"></script>
-        <!-- bootstrap -->
-        <script src="#{request.contextPath}/assets/js/lib/mmc-common.js"></script>
-        <script src="#{request.contextPath}/assets/js/lib/mmc-chat.js"></script>
-        <script src="#{request.contextPath}/assets/js/scripts.js"></script>
-        <!--  Chart js -->
-        <script src="#{request.contextPath}/assets/js/lib/chart-js/Chart.bundle.js"></script>
-        <script src="#{request.contextPath}/assets/js/lib/chart-js/chartjs-init.js"></script>
-        <!-- // Datamap -->
-        <script src="#{request.contextPath}/assets/js/scripts.js"></script>
+        <ui:insert name="areaTrabajo">
+            <ui:include src="areaTrabajo.xhtml"/>
+        </ui:insert>
 
-        <script src="#{request.contextPath}/assets/lib/lobipanel/js/lobipanel.js"></script>
+        <ui:insert name="pieDePagina">
+            <ui:include src="pieDePagina.xhtml"/>
+        </ui:insert>
 
 
-        <!-- scripit init-->
-        <script>
-            $(document).ready(function () {
-                $('#lobipanel-custom-control').lobiPanel({
-                    reload: false,
-                    close: false,
-                    editTitle: false
-                });
-            });
-        </script>
+        <!-- Template Main JS File -->
+        <script src="#{request.contextPath}/assets/js/main.js"></script>
+        <!-- Vendor JS Files -->
+        <script src="#{request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/php-email-form/validate.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/quill/quill.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/tinymce/tinymce.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/simple-datatables/simple-datatables.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/chart.js/chart.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/echarts/echarts.min.js"></script>
 
-        <!-- /# content wrap -->
     </h:body>
 
 </html>

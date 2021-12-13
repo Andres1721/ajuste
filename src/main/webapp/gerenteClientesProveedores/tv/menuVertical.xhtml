@@ -1,41 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
-        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-            <div class="nano">
-                <div class="nano-content">
-                    <ul>
-                        <li class="active">
-                            <a class="sidebar-sub-toggle"><i class="ti-home"></i> COLAFF <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="quienesSomos.xhtml">Quienes Somos</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="app-profile.xhtml"><i class="ti-user"></i> Profile</a></li>
-
-                        <c:forEach var="rol" items="#{gestionUsuario.usuLog.rolCollection}">
-                            <li>
-                                <a class="sidebar-sub-toggle"><i class="ti-files"></i>#{rol.rolNombre}<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                                <ul>
-                                    <c:forEach var="vista" items="#{rol.vistaCollection}">
-                                        <c:if test="#{vista.visEstado eq '1'}">
-                                            <li><a href="#{vista.visRuta.replace('/gerenteClientesProveedores','')}">#{vista.visNombres}</a></li>
-
-                                        </c:if>
-                                    </c:forEach>
-                                </ul>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../usuario/index.xhtml">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+                <c:forEach var="rol" items="#{gestionUsuario.usuLog.rolCollection}">	
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                            <i class= "#{rol.rolIcono}"></i><span>#{rol.rolNombre}</span><i class="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <c:forEach var="vista" items="#{rol.vistaCollection}">
+                                <c:if test="#{vista.visEstado eq '1'}">
+                                    <li><a href="#{vista.visRuta.replace('/gerenteClientesProveedores','')}">#{vista.visNombres}</a></li>
+                                </c:if>
+                            </c:forEach>
+                        </ul>
+                    </li><!-- End Components Nav -->
+                </c:forEach>
+                <h:form>
+                    <li>
+                        <a class="nav-link collapsed">
+                            <i>
+                                <span>
+                                    <h:commandLink action="#{gestionUsuario.cerraSesion()}"   class="bi bi-box-arrow-in-left">  Cerrar Sesión</h:commandLink>
+                                </span>
+                            </i>
+                        </a>
+                    </li>
+                </h:form>
+            </ul>
+        </aside><!-- End Sidebar-->
     </ui:composition>
 </html>
 

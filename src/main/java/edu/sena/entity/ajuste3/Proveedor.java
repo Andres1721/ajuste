@@ -51,7 +51,7 @@ public class Proveedor implements Serializable {
     private String telefonoProveedor;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 11)
+    @Size(min = 1, max = 50)
     @Column(name = "emailProveedor")
     private String emailProveedor;
     @ManyToMany(mappedBy = "proveedorCollection", fetch = FetchType.LAZY)

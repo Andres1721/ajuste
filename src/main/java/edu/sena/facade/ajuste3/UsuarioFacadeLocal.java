@@ -40,6 +40,16 @@ public interface UsuarioFacadeLocal {
 
     public boolean cambiarEstado(Usuario usuReg);
 
+    public boolean actualizarDatosPerfil(Usuario usuReg);
+
+    public void llamadoProcedure();
+
+    public long cantidadClientes();
+
+    public long cantidadProveedores();
+
+    public long cantidadMontoFacturas();
+
     int count();
 
 }

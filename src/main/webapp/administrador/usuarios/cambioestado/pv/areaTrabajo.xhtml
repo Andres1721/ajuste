@@ -3,80 +3,109 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <h:head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </h:head>
     <ui:composition>
         <h:body>
-            <div class="content-wrap">
-                <div class="main">
-                    <div class="col-lg-12">
-                        <div class="card alert">
-                            <div class="card-header">
-                                <h4>Listado de Usuarios del Sistema </h4>
-                                <div class="card-header-right-icon">  </div>
-                            </div>
-                            <div class="card-body">
+            <main id="main" class="main">
 
-                                <table class="table table-responsive table-hover ">
-                                    <thead>
-                                        <tr>
-                                            <th>T Documento</th>
-                                            <th># Documento</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Correo</th>
-                                            <th>Estado</th>
-                                            <th>Cambiar de estado</th>
-                                        </tr>
+                <div class="pagetitle">
+                    <h1>Módulo de Usuarios</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Tables</li>
+                            <li class="breadcrumb-item active">Data</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-                                    </thead>
-                                    <tbody>
-                                        <h:form>
-                                            <c:forEach items="#{gestionUsuario.listarUsuarios()}"   var ="objVa">
-                                                <tr>
-                                                    <td>#{objVa.tipoDocumento}</td>
-                                                    <td>#{objVa.numerodocumento}</td>
-                                                    <td>#{objVa.nombres}</td>
-                                                    <td>#{objVa.correoelectronico}</td>
-                                                    <td>#{objVa.apellidos}</td>
-                                                    <td>
-                                                        <c:if test="#{objVa.estado}">
-                                                            <img src="images/active.png" alt="" width="50"/>
-                                                        </c:if>   
-                                                        <c:if test="#{!objVa.estado}">
-                                                            <img src="images/closed.png" alt="" width="50"/>
-                                                        </c:if>    
-                                                    </td>
-                                                    <td>
-                                                        <h:commandButton action="#{gestionUsuario.cambiarEstado(objVa)}" class="btn btn-primary" value="Cambiar Estado"></h:commandButton>
-                                                    </td>    
-                                                </tr>
-                                            </c:forEach>
-                                        </h:form>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div><!-- /# card -->
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card alert">
-                            <div class="card-header">
-                                <h4>Reportes general de Usuarios</h4>
-                                <div class="card-header-right-icon">  </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="product-2-des">
-                                    <div class="product_des">
-                                        <p>Informe para ver los usuarios que están en le sistema</p>
-                                        <h:form>
-                                        <h:commandButton action="#{gestionUsuario.descargaReporte()}" class="btn btn-primary" value="Generar reporte en pdf"></h:commandButton> 
-                                        </h:form>
-                                    </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Usuarios del Sistema</h5>
+                                    <p>Seción para activa  o desactivar usuarios del Sistema.</p>
+
+                                    <!-- Table with stripped rows -->
+                                    <table class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <th># Documento</th>
+                                                <th>Nombres</th>
+                                                <th>Apellidos</th>
+                                                <th>Correo</th>
+                                                <th>Estado</th>
+                                                <th>Evento</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <h:form>
+                                                <c:forEach items="#{gestionUsuario.listarUsuarios()}"   var ="objVa">
+                                                    <tr>
+                                                        <td>#{objVa.tipoDocumento}</td>
+                                                        <td>#{objVa.numerodocumento}</td>
+                                                        <td>#{objVa.nombres}</td>
+                                                        <td>#{objVa.correoelectronico}</td>
+                                                        <td>#{objVa.apellidos}</td>
+                                                        <td>
+                                                            <c:if test="#{objVa.estado}">
+                                                                <img src="images/active.png" alt="" width="60"/>
+                                                            </c:if>   
+                                                            <c:if test="#{!objVa.estado}">
+                                                                <img src="images/closed.png" alt="" width="60"/>
+                                                            </c:if>    
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <h:commandButton action="#{gestionUsuario.cambiarEstado(objVa)}" class="btn-success small" value="Cambiar Estado" ></h:commandButton>
+                                                            </div>
+                                                            <br></br>
+                                                            <h:form>
+
+                                                                <button type="button" class="btn-info small" data-bs-toggle="modal" data-bs-target="#smallModal">
+                                                                    Editar Usuario
+                                                                </button>
+
+                                                                <div class="modal fade" id="smallModal" tabindex="-1">
+                                                                    <div class="modal-dialog modal-sm">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title">Small Modal</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- End Small Modal-->
+                                                            </h:form>                                                            
+                                                        </td>    
+                                                    </tr>
+                                                </c:forEach>
+                                            </h:form>
+                                        </tbody>
+                                    </table>
+                                    <!-- End Table with stripped rows -->
                                 </div>
                             </div>
-                        </div><!-- /# card -->
+                        </div>
                     </div>
-                </div>
-            </div>
+                </section>
+            </main><!-- End #main -->
         </h:body>
     </ui:composition>
 </html>

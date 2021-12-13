@@ -55,6 +55,12 @@ public class gestionUsuario implements Serializable {
     private String nombreIn = "";
     private String correoIn = "";
     private String claveIn = "";
+
+//    Infolefts
+    private long cantidadCli = 0;
+    private long cantidadProveedores = 0;
+    private long cantidadMonto = 0;
+
     private List<Rol> todosLosRoles = new ArrayList<>();
     private List<Rol> rolesSinAsignar = new ArrayList<>();
     @Resource(lookup = "java:app/ajuste3")
@@ -66,6 +72,9 @@ public class gestionUsuario implements Serializable {
     @PostConstruct
     public void cargaInicial() {
         todosLosRoles.addAll(rolFacadeLocal.findAll());
+        cantidadCli = usuarioFacadeLocal.cantidadClientes();
+        cantidadProveedores = usuarioFacadeLocal.cantidadProveedores();
+        cantidadMonto =usuarioFacadeLocal.cantidadMontoFacturas();
     }
 
     public List<Usuario> listarUsuarios() {
@@ -90,26 +99,37 @@ public class gestionUsuario implements Serializable {
     }
 
     public void registrarUsuario() {
-        if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
-            PrimeFaces.current().executeScript("Swal.fire({"
-                    + "  title: 'OK!',"
-                    + "  text: 'Usuario Registrado',"
-                    + "  icon: 'success',"
-                    + "  confirmButtonText: 'Aceptar'"
-                    + "})");
-        
-        } else {
-      
-            PrimeFaces.current().executeScript("Swal.fire({"
-                    + "  title: 'Error!',"
-                    + "  text: 'Usuario no Registrado',"
-                    + "  icon: 'error',"
-                    + "  confirmButtonText: 'Intentar de nuevo'"
-                    + "})");
+        try {
+            Usuario usuExist = usuarioFacadeLocal.recuperarClave(usuReg.getCorreoelectronico());
+            if (usuExist == null || usuExist.getCorreoelectronico() == null) {
+                if (usuarioFacadeLocal.registrarUsuario(usuReg)) {
+                    usuReg = new Usuario();
+                    PrimeFaces.current().executeScript("Swal.fire({"
+                            + "  title: 'OK!',"
+                            + "  text: 'Usuario Registrado',"
+                            + "  icon: 'success',"
+                            + "  confirmButtonText: 'Aceptar'"
+                            + "})");
+                } else {
+
+                    PrimeFaces.current().executeScript("Swal.fire({"
+                            + "  title: 'Error!',"
+                            + "  text: 'Usuario no Registrado',"
+                            + "  icon: 'error',"
+                            + "  confirmButtonText: 'Intentar de nuevo'"
+                            + "})");
+                }
+
+            } else {
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Error!',"
+                        + "  text: 'Usuario ya está Registrado',"
+                        + "  icon: 'error',"
+                        + "  confirmButtonText: 'Recuperar su clave'"
+                        + "})");
+            }
+        } catch (Exception e) {
         }
-
-        usuReg = new Usuario();
-
     }
 
     public void cerraSesion() throws IOException {
@@ -165,7 +185,8 @@ public class gestionUsuario implements Serializable {
         }
 
     }
-        public void descargaReporte() {
+
+    public void descargaReporte() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) context.getRequest();
@@ -174,7 +195,7 @@ public class gestionUsuario implements Serializable {
         try {
             File jasper = new File(context.getRealPath("/reportes/usuarios.jasper"));
             JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), new HashMap(), dataSource.getConnection());
-            
+
             HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
             hsr.addHeader("Content-disposition", "attachment; filename=usuarios.pdf");
             OutputStream os = hsr.getOutputStream();
@@ -188,12 +209,37 @@ public class gestionUsuario implements Serializable {
         }
     }
 
+    public void actualizarMisDatos() {
+        try {
+
+            usuarioFacadeLocal.actualizarDatosPerfil(usuLog);
+            PrimeFaces.current().executeScript("Swal.fire({"
+                    + "  title: 'Usuario Actualizado !',"
+                    + "  text: 'Con Exito !!!',"
+                    + "  icon: 'success',"
+                    + "  confirmButtonText: 'Ok'"
+                    + "})");
+        } catch (Exception e) {
+            PrimeFaces.current().executeScript("Swal.fire({"
+                    + "  title: 'Error!',"
+                    + "  text: 'No se puede realizar esta peticion',"
+                    + "  icon: 'error',"
+                    + "  confirmButtonText: 'Por favor intente mas tarde'"
+                    + "})");
+
+        }
+
+    }
+
     public void cambiarEstado(Usuario usu) {
         usuarioFacadeLocal.cambiarEstado(usu);
 
     }
 
-    public void cargaTemporal(Usuario usuIn) {
+    public void llamadoProcedimiento() {
+        System.out.println("Llamando el  procedimiento");
+        usuarioFacadeLocal.llamadoProcedure();
+
     }
 
     public Usuario getUsuReg() {
@@ -266,6 +312,30 @@ public class gestionUsuario implements Serializable {
 
     public void setRolesSinAsignar(List<Rol> rolesSinAsignar) {
         this.rolesSinAsignar = rolesSinAsignar;
+    }
+
+    public long getCantidadCli() {
+        return cantidadCli;
+    }
+
+    public void setCantidadCli(long cantidadCli) {
+        this.cantidadCli = cantidadCli;
+    }
+
+    public long getCantidadProveedores() {
+        return cantidadProveedores;
+    }
+
+    public void setCantidadProveedores(long cantidadProveedores) {
+        this.cantidadProveedores = cantidadProveedores;
+    }
+
+    public long getCantidadMonto() {
+        return cantidadMonto;
+    }
+
+    public void setCantidadMonto(long cantidadMonto) {
+        this.cantidadMonto = cantidadMonto;
     }
 
 }

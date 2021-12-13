@@ -45,6 +45,9 @@ public class Rol implements Serializable {
     @Size(max = 45)
     @Column(name = "rol_descripcion")
     private String rolDescripcion;
+    @Size(max = 150)
+    @Column(name = "rol_icono")
+    private String rolIcono;
     @JoinTable(name = "tbl_usuario_has_tbl_rol", joinColumns = {
         @JoinColumn(name = "fk_rolid", referencedColumnName = "rol_rolid")}, inverseJoinColumns = {
         @JoinColumn(name = "fk_usuarioid", referencedColumnName = "usuarioid")})
@@ -100,6 +103,14 @@ public class Rol implements Serializable {
         this.vistaCollection = vistaCollection;
     }
 
+    public String getRolIcono() {
+        return rolIcono;
+    }
+
+    public void setRolIcono(String rolIcono) {
+        this.rolIcono = rolIcono;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -124,5 +135,5 @@ public class Rol implements Serializable {
     public String toString() {
         return "com.mycompany.alterno.Rol[ rolRolid=" + rolRolid + " ]";
     }
-    
+
 }

@@ -2,275 +2,162 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </h:head>
     <ui:composition>
-        <h:body> 
-            <div class="main">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-8 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <div align="center">
-                                        <h1>Módulo de Ventas</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                        <div class="col-lg-4 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <ol class="breadcrumb text-right">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li><a href="#">Elements </a></li>
-                                        <li class="active">Collapse</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                    </div>
+        <h:body>
+            <main id="main" class="main">
+                <div class="pagetitle">
+                    <h1>Módulo de Ventas</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item active">Elements</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                <section class="section">
                     <div class="col-lg-12">
-                        <div class="card alert">
-                            <div class="card-header">
-                                <h4>Registro de Productos</h4>
-
-                                <div class="card-header-right-icon">
-                                    <ul>
-                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="card">
                             <div class="card-body">
-                                <div class="basic-form">
-                                    <h:form>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formIdUsuario">Ingrese su Id</h:outputLabel>
-                                            <h:inputText 
-                                                value="#{gestionUsuario.usuReg.usuarioid}"
-                                                maxlength="20"
-                                                required="true"
-                                                requiredMessage="Por favor Ingrese su Id"
-                                                class="form-control" 
-                                                id="formIdUsuario">
+                                <h5 class="card-title">Registro de Ventas</h5>
 
-                                            </h:inputText>
-                                            <h:message for="formIdUsuario" style="color: red"></h:message>
-                                        </div>
-                                        <div class="form-group">                                        
-                                            <h:outputLabel for="fmrTd">Tipo de documento</h:outputLabel>
-                                            <h:selectOneMenu value="#{gestionUsuario.usuReg.tipoDocumento}" class="form-control" id="fmrTd">
-                                                <f:selectItem itemValue="CC" itemLabel="Registro Civil" />
-                                                <f:selectItem itemValue="12" itemLabel="Tarjeta de identidad" />
-                                                <f:selectItem itemValue="13" itemLabel="Cédula de ciudadanía" />
-                                                <f:selectItem itemValue="14" itemLabel="Certificado de Registraduría" />
-                                                <f:selectItem itemValue="15" itemLabel="Tipo de documento que identifica una sucesión" />
-                                                <f:selectItem itemValue="21" itemLabel="Tarjeta de extranjería" />
-                                                <f:selectItem itemValue="22" itemLabel="Cédula de extranjería" />
-                                                <f:selectItem itemValue="31" itemLabel="NIT" />
-                                                <f:selectItem itemValue="33" itemLabel="Identificación de extranjeros diferente al NI" />
-                                                <f:selectItem itemValue="41" itemLabel="Pasaporte" />
-                                                <f:selectItem itemValue="42" itemLabel="Documento de identificación extranjero" />
-                                                <f:selectItem itemValue="43" itemLabel="Sin identificación del exterior" />
-                                                <f:selectItem itemValue="44" itemLabel="Documento de Identificación extranjero Person" />
-                                                <f:selectItem itemValue="46" itemLabel="Carnét Diplomático" />
-
-
+                                <!-- Floating Labels Form -->
+                                <form class="row g-3">
+                                    <div class="col-md-3">
+                                        <h:outputLabel for="formaPago" class="form-label">Forma de Pago</h:outputLabel>
+                                        <div class="col-sm-10">
+                                            <h:selectOneMenu value="#{ordenVenta.idFormaPago}" id="formaPago" class="form-control">
+                                                <f:selectItems itemValue="#{doc.idFormaPago}"  itemLabel="#{doc.drescripFormaPago}" var="doc" value="#{ordenVenta.listarFormaPago()}"></f:selectItems>
+                                            </h:selectOneMenu>
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h:outputLabel for="estadoCompra" class="form-label">Estado de la compra</h:outputLabel>
+                                        <div class="col-sm-10">
+                                            <h:selectOneMenu value="#{ordenVenta.idEstadoCompra}" id="estadoCompra" class="form-control">
+                                                <f:selectItems itemValue="#{estado.idEstadoCompra}"  itemLabel="#{estado.descripEstadoPago}" var="estado" value="#{ordenVenta.listarEstadoCompra()}"></f:selectItems>
                                             </h:selectOneMenu>
                                         </div>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formIdentificacion">Ingrese su número de Identificación</h:outputLabel>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h:outputLabel for="fechaVenta" class="form-label">Fecha Venta
+                                        </h:outputLabel>
+                                        <div class="col-sm-10">
                                             <h:inputText 
-                                                value="#{gestionUsuario.usuReg.numerodocumento}"
+                                                value="#{gestionProveedores.pro.telefonoProveedor}"
                                                 maxlength="20"
                                                 required="true"
-                                                requiredMessage="Por favor ingrese el número de identificación"
+                                                requiredMessage="Ingrese Fecha  Venta"
                                                 class="form-control" 
-                                                id="formIdentificacion">
-
+                                                id="fechaVenta">
                                             </h:inputText>
-                                            <h:message for="formIdentificacion" style="color: red"></h:message>
                                         </div>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formNombre">Ingrese su Nombre</h:outputLabel>
+                                        <h:message for="fechaVenta" style="color: red"></h:message>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h:outputLabel for="fechaVencimiento" class="form-label">Fecha Vencimiento
+                                        </h:outputLabel>
+                                        <div class="col-sm-10">
                                             <h:inputText 
-                                                value="#{gestionUsuario.usuReg.nombres}"
+                                                value="#{gestionProveedores.pro.telefonoProveedor}"
                                                 maxlength="20"
                                                 required="true"
-                                                requiredMessage="Por favor ingrese su Nombre"
+                                                requiredMessage="Ingrese Fecha Vencimiento"
                                                 class="form-control" 
-                                                id="formNombre">
-
+                                                id="fechaVencimiento">
                                             </h:inputText>
-                                            <h:message for="formNombre" style="color: red"></h:message>
                                         </div>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formApellido">Ingrese su Apellido</h:outputLabel>
+                                        <h:message for="fechaVencimiento" style="color: red"></h:message>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <h:outputLabel for="observaciones" class="form-label">Observaciones
+                                        </h:outputLabel>
+                                        <div class="form-floating"> 
                                             <h:inputText 
-                                                value="#{gestionUsuario.usuReg.apellidos}"
-                                                maxlength="20"
+                                                value="#{gestionProveedores.pro.telefonoProveedor}"
+                                                maxlength="50"
                                                 required="true"
-                                                requiredMessage="Por favor ingrese su Apellido"
+                                                requiredMessage="Ingrese observaciones"
                                                 class="form-control" 
-                                                id="formApellido">
-
+                                                id="observaciones">
                                             </h:inputText>
-                                            <h:message for="formApellido" style="color: red"></h:message>
-
                                         </div>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formCorreo">Ingrese su Correo</h:outputLabel>
-                                            <h:inputText 
-                                                value="#{gestionUsuario.usuReg.correoelectronico}"
-                                                maxlength="20"
-                                                required="true"
-                                                requiredMessage="Por favor ingrese el Correo"
-                                                class="form-control" 
-                                                id="formCorreo">
-
-                                            </h:inputText>
-                                            <h:message for="formCorreo" style="color: red"></h:message>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-12">
+                                            <h:outputLabel for="cliente" class="form-label">Cliente
+                                            </h:outputLabel>
+                                            <div class="form-floating">
+                                                <h:selectOneMenu value="#{ordenVenta.idEstadoCliente}" id="cliente" class="form-control">
+                                                    <f:selectItems itemValue="#{cliente.idCliente}"  itemLabel="#{cliente.razonSocial}" var="cliente" value="#{ordenVenta.listarClientes()}"></f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <h:outputLabel for="formPassword">Contraseña</h:outputLabel>
-                                            <h:inputSecret 
-                                                value="#{gestionUsuario.usuReg.clave}"
-                                                maxlength="30"
-                                                required="true"
-                                                requiredMessage="Por favor ingrese la contraseña"
-                                                class="form-control" id="formPassword">
-                                            </h:inputSecret>
-                                            <h:message for="formPassword" style="color: red"></h:message>
-                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <table class="table" id="tabla_btn">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Position</th>
+                                                    <th scope="col">Age</th>
+                                                    <th scope="col">Start Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
 
 
-                                        <h:commandButton action="#{gestionUsuario.registrarUsuario()}" class="btn btn-primary" value="Registrar"></h:commandButton>
-                                    </h:form>
-                                </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                    </div>
+                                </form><!-- End floating Labels Form -->
+
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Reportes de Productos en las Ventas</h4>
-                                        <div class="card-header-right-icon">  </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h:form>
-                                            <p>Este reporte muestra los productos más vendidos</p>
-                                            <h:commandButton action="#{ordenVenta.descargaReporte()}"  class="btn btn-danger" value="Generar Reporte PDF"></h:commandButton>
-                                        </h:form>
-                                    </div>
-                                </div><!-- /# card -->
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Reportes de Productos en las Ventas</h4>
-                                        <div class="card-header-right-icon">  </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h:form>
-                                            <p>Este reporte muestra los productos más vendidos</p>
-                                            <h:commandButton action="#{ordenVenta.descReporteXlsx()}"  class="btn btn-success" value="Generar Reporte Excel"></h:commandButton>
-                                        </h:form>
-                                    </div>
-                                </div><!-- /# card -->
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Cargue Masivo de Ventas</h4>
-                                        <div class="card-header-right-icon">  </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h:form>
-                                            <p style="color: red"></p>
-                                            <h:commandButton action="#{ordenVenta.archivoCsv()}"  class="btn btn-dark" value="Selecccionar Archivo"></h:commandButton>
-                                        </h:form>
-                                    </div>
-                                </div><!-- /# card -->
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Envío Masivo de Correos</h4>
-                                        <div class="card-header-right-icon">  </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h:form>
-                                            <p style="color: red">Por favor cargar en formato  CSV</p>
-                                            <h:commandButton action="#{ordenVenta.archivoCsv()}"  class="btn btn-warning" value="Selecccionar Archivo"></h:commandButton>
-                                        </h:form>
-                                    </div>
-                                </div><!-- /# card -->
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
 
-                    </div><!-- /# main content -->
-                    <div class="col-lg-12">
-                        <div class="card alert">
-                            <div class="card-header">
-                                <h4>Listado de Ordenes de  Venta</h4>
-                                <div class="card-header-right-icon">
+                    </div>
 
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-responsive table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Numero de Orden</th>
-                                            <th>Fecha</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Direccion</th>
-                                            <th>Correo</th>
-                                            <th>Cantidad</th>
-                                            <th>Descripcion</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach items="#{ordenVenta.listarVentas()}"   var ="objVa">
-                                            <tr>
-                                                <td>#{objVa.idVentas}</td>
-                                                <td>#{objVa.fecha}</td>
-                                                <td>#{objVa.nombres}</td>
-                                                <td>#{objVa.apellidos}</td>
-                                                <td>#{objVa.direccion}</td>
-                                                <td>#{objVa.correo}</td>
-                                                <td>#{objVa.catidadArticulos}</td>
-                                                <td>#{objVa.descripcion}</td>
-                                                <td>#{objVa.precioTotal}</td>
-                                                <td>
-                                                    <h:form>
-                                                        <p style="color: red">ENVIO MASIVO DE FACTURAS</p>
-                                                        <h:commandButton action="#{ordenVenta.detalleOrden(objVa)}"  class="btn btn-warning" value="Enviar la Venta"></h:commandButton>
-                                                    </h:form>
-                                                </td>    
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div><!-- /# column -->
-                </div><!-- /# main content -->
-            </div>
+                </section>
+            </main><!-- End #main -->
+    <script>
 
+//    alert("Un mensaje de prueba");
+        insertTable = function () {
+            var id_table = "tabla_btn"
+            var pos = document.getElementById(id_table).querySelectorAll("tbody tr").length +1
+            var tr = document.getElementById(id_table).insertRow(pos)
+
+            var num = tr.insertCell(0)
+            var nombre = tr.insertCell(1)
+            var posicion = tr.insertCell(2)
+            var edad = tr.insertCell(3)
+            var fecha = tr.insertCell(4)
+
+            num.innerHTML = pos
+            nombre.innerHTML = "dsa"
+            posicion.innerHTML = "Developer"
+            edad.innerHTML = "21"
+            fecha.innerHTML = "2018-10-09"
+        }
+
+    </script>
         </h:body>
     </ui:composition>
+
+
 </html>
 

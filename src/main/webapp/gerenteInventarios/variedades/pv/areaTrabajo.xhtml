@@ -3,150 +3,113 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </h:head>
     <ui:composition>
-         <!-- END chat Sidebar-->
-        <div class="content-wrap">
-            <div class="main">
-                <div class="container-fluid">
+        <h:body>
+            <main id="main" class="main">
+                <div class="pagetitle">
+                    <h1>Módulo de Inventarios</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item active">Elements</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                <section class="section">
                     <div class="row">
-                        <div class="col-lg-8 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <h1>Módulo de Productos</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 p-0">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <ol class="breadcrumb text-right">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li class="active">Basic Form</li>
-                                    </ol>
+                        <div class="col-lg-10">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Registro de Variedades</h5>
+
+                                    <h:form>
+                                        <div  class="row mb-3">
+                                            <h:outputLabel for="variedades" class="col-sm-2 col-form-label">Id de Variedad</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionVariedades.varReg.idVariedades}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Por favor Ingrese Id de Variedad"
+                                                    class="form-control" 
+                                                    id="variedades">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="variedades" style="color: red"></h:message>
+                                        </div>
+                                        <div  class="row mb-3">
+                                            <h:outputLabel for="Color" class="col-sm-2 col-form-label">Color</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionVariedades.varReg.color}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Ingrese Color de Variedad"
+                                                    class="form-control" 
+                                                    id="Color">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="Color" style="color: red"></h:message>
+                                        </div>
+                                        <div  class="row mb-3">
+                                            <h:outputLabel for="nombVariedad" class="col-sm-2 col-form-label">Nombre Variedad</h:outputLabel>
+                                            <div class="col-sm-10">
+                                                <h:inputText 
+                                                    value="#{gestionVariedades.varReg.nombreVariedad}"
+                                                    maxlength="20"
+                                                    required="true"
+                                                    requiredMessage="Ingrese Nombre de Variedad"
+                                                    class="form-control" 
+                                                    id="nombVariedad">
+                                                </h:inputText>
+                                            </div>
+                                            <h:message for="nombVariedad" style="color: red"></h:message>
+                                        </div>
+                                        <br></br>
+                                        <h:commandButton  styleClass="p-mr-2" action="#{gestionVariedades.crearVariedad()}"  class="btn btn-success" value="Registrar Variedad"></h:commandButton>
+                                    </h:form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="main-content">
-                        <div class="row">
-
-
-                        </div><!-- /# row -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <div class="card-header-right-icon">
-                                            <ul>
-                                                <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="basic-form">
-                                            <div class="panel-body">
-                                                <div class="content-row">
-                                                    <h2 class="content-row-title">Registro de variedades 
-                                                        <!--<span>(<b>More Colors See</b>: <a href="colors.html">Flat UI Color Picker</a>)</span>-->
-                                                    </h2>
-                                                    <div class="row">
-                                                        <h:form>
-                                                            <div class="row left-text-custom">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="Variedades" class="left-text-custom">Id Variedades</label>
-                                                                        <h:inputText 
-                                                                            value="#{gestionVariedades.varReg.idVariedades}"
-                                                                            maxlength="20"
-                                                                            required="true"
-                                                                            requiredMessage="Ingrese Id Variedad"
-                                                                            class="form-control" 
-                                                                            id="Variedades">
-
-                                                                        </h:inputText>
-                                                                        <h:message for="Variedades" style="color: red"></h:message>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="Color" class="left-text-custom">Color</label>
-                                                                        <h:inputText 
-                                                                            value="#{gestionVariedades.varReg.color}"
-                                                                            maxlength="20"
-                                                                            required="true"
-                                                                            requiredMessage="Ingrese Nombre Variedad"
-                                                                            class="form-control" 
-                                                                            id="Color">
-                                                                        </h:inputText>
-                                                                        <h:message for="Color" style="color: red"></h:message>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="NombVariedades" class="left-text-custom">Nombre Variedad</label>
-                                                                        <h:inputText 
-                                                                            value="#{gestionVariedades.varReg.nombreVariedad}"
-                                                                            maxlength="20"
-                                                                            required="true"
-                                                                            requiredMessage="Ingrese Color de Variedad"
-                                                                            class="form-control" 
-                                                                            id="NombVariedades">
-                                                                        </h:inputText>
-                                                                        <h:message for="NombVariedades" style="color: red"></h:message>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="row left-text-custom">
-                                                                <div class="col-md-4">
-
-                                                                </div>
-                                                                <div class="col-md-4">
-
-                                                                    <h:commandButton action="#{gestionVariedades.crearVariedad()}"  class="btn btn-primary" value="Registrar Variedad"></h:commandButton>
-                                                                </div>
-                                                                <div class="col-md-4">
-
-                                                                </div>
-                                                            </div>
-
-                                                        </h:form>
-                                                    </div>
-                                                </div>
-                                            </div><!-- panel body -->
-
-                                        </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reportes de Variedades</h5>
+                                    <h:form>
+                                        <p>Este reporte muestra las variedades que existen enb el sistema</p>
+                                        <h:commandButton action="#{gestionProductos.descargaReporte()}"  class="btn btn-danger" value="Generar Reporte PDF"></h:commandButton>
+                                    </h:form>
                                 </div>
-                            </div><!-- /# column -->
-                            <div class="col-lg-6">
-                                <div class="card alert">
-                                    <div class="card-header">
-                                        <h4>Listado de Variedades</h4>
-                                        <div class="card-header-right-icon">
+                            </div>
+                        </div>
+                    </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table table-responsive table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id de Variedad</th>
-                                                    <th>Nombre Variedad</th>
-                                                    <th>Color de Variedad</th>
-
-                                                </tr>
-                                            </thead>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Listado de Variedades</h5>
+                                    <table class="table table-bordered border-success">
+                                        <thead>
+                                            <tr>
+                                                <th>Id de Variedad</th>
+                                                <th>Nombre Variedad</th>
+                                                <th>Color de Variedad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <tbody>
                                                 <c:forEach items="#{gestionVariedades.todasVariedades()}"   var ="objVa">
-                                                    <tr>
+                                                    <tr class="table-success">
                                                         <td>
                                                             #{objVa.idVariedades}
                                                         </td>
@@ -159,19 +122,14 @@
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div><!-- /# column -->
-                        </div><!-- /# row -->
-                        <div class="row">
-
-
-                        </div><!-- /# row -->
-                    </div><!-- /# main content -->
-                </div><!-- /# container-fluid -->
-            </div><!-- /# main -->
-        </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main><!-- End #main -->          
+        </h:body>
     </ui:composition>
 </html>
-

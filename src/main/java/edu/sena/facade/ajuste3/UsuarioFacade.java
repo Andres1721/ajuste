@@ -11,8 +11,10 @@ import static java.lang.Boolean.TRUE;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 /**
  *
@@ -82,6 +84,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return null;
         }
     }
+
     @Override
     public Usuario exitenciadeId(int id) {
         try {
@@ -92,6 +95,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return null;
         }
     }
+
     @Override
     public List<Usuario> listarUsuarios() {
 
@@ -111,15 +115,6 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public boolean cambiarEstado(Usuario usu) {
 
         try {
-            if (usu.getEstado()) {
-                usu.setEstado(Boolean.FALSE);
-                System.out.println("Entro al if");
-            } else {
-                usu.setEstado(Boolean.TRUE);
-                System.out.println("Entro al else");
-
-            }
-            System.out.println("Entro al facade");
             Query qt = em.createQuery("UPDATE Usuario p SET p.estado= :estadoNuevo WHERE p.usuarioid = :usuId");
             qt.setParameter("estadoNuevo", usu.getEstado());
             qt.setParameter("usuId", usu.getUsuarioid());
@@ -131,5 +126,90 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return false;
 
         }
+    }
+
+    @Override
+    public long cantidadClientes() {
+
+        long quantity = 0;
+        try {
+            em.getEntityManagerFactory().getCache().evictAll();
+            Query q = em.createQuery("SELECT count(c.idCliente) FROM Cliente c");
+            quantity = (long) q.getSingleResult();
+
+            return quantity;
+        } catch (Exception e) {
+            System.out.println("Error  en :: cantidadClientes " + e.getMessage());
+            return quantity;
+
+        }
+
+    }
+
+    @Override
+    public long cantidadProveedores() {
+
+        long quantity = 0;
+        try {
+            em.getEntityManagerFactory().getCache().evictAll();
+            Query q = em.createQuery("SELECT count(c.idProveedor) FROM Proveedor c");
+            quantity = (long) q.getSingleResult();
+
+            return quantity;
+        } catch (Exception e) {
+            System.out.println("Error  en :: cantidadProveedores " + e.getMessage());
+            return quantity;
+
+        }
+
+    }
+
+    @Override
+    public long cantidadMontoFacturas() {
+
+        long quantity = 0;
+        try {
+            em.getEntityManagerFactory().getCache().evictAll();
+            Query q = em.createQuery("SELECT SUM(c.valorTotal) FROM OrdenVenta c ORDER BY c.fechaVentaFacturacion DESC");
+            quantity = (long) q.getSingleResult();
+            
+
+
+            return quantity;
+        } catch (Exception e) {
+            System.out.println("Error  en :: cantidadMontoFacturas " + e.getMessage());
+            return quantity;
+
+        }
+
+    }
+
+    @Override
+    public boolean actualizarDatosPerfil(Usuario usu) {
+        try {
+            Query qt = em.createQuery("UPDATE Usuario p SET p.nombres =:nombres ,p.apellidos =:apellidos,p.correoelectronico =:correo WHERE p.usuarioid = :usuId");
+            qt.setParameter("apellidos", usu.getApellidos());
+            qt.setParameter("nombres", usu.getNombres());
+            qt.setParameter("usuId", usu.getUsuarioid());
+            qt.setParameter("correo", usu.getCorreoelectronico());
+            qt.executeUpdate();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Error usuarioFaca::cambiar actualizarDatosPerfil");
+            return false;
+
+        }
+    }
+
+    @Override
+    public void llamadoProcedure() {
+
+        StoredProcedureQuery procedureQuery = this.em.createStoredProcedureQuery("proc_info_usuarios");
+        procedureQuery.registerStoredProcedureParameter("param_total", Double.class, ParameterMode.OUT);
+        procedureQuery.execute();
+        Double sum = (Double) procedureQuery.getOutputParameterValue("param_total");
+
+        System.out.println("Entrando al métod ==>  llamadoProcedure  imprimiendo  mi valor  " + sum);
     }
 }
