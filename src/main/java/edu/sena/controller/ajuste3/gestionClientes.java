@@ -8,6 +8,7 @@ package edu.sena.controller.ajuste3;
 import edu.sena.entity.ajuste3.Cliente;
 import edu.sena.entity.ajuste3.EstadoCliente;
 import edu.sena.facade.ajuste3.ClienteFacadeLocal;
+import edu.sena.facade.ajuste3.DocumentoFacadeLocal;
 import edu.sena.facade.ajuste3.EstadoClienteFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -24,13 +26,15 @@ import javax.ejb.EJB;
 @Named(value = "gestionClientes")
 @SessionScoped
 public class gestionClientes implements Serializable {
-    
-    private List Listestados = new ArrayList<>();
-    private int numero;
+
+    private List ListestadosCli = new ArrayList<>();
+    private int numeroEstado;
     private String estado;
     private Cliente cliente = new Cliente();
-    
-    @EJB    
+
+    @EJB
+    EstadoClienteFacadeLocal estadoClienteFacadeLocal;
+    @EJB
     ClienteFacadeLocal clienteFacadeLocal;
 
     /**
@@ -38,56 +42,61 @@ public class gestionClientes implements Serializable {
      */
     public gestionClientes() {
     }
-    @EJB
-    EstadoClienteFacadeLocal estadoClienteFacadeLocal;
-    
+
     @PostConstruct
     public void cargaPostConst() {
-        Listestados.addAll(estadoClienteFacadeLocal.findAll());
-        
+        ListestadosCli.addAll(estadoClienteFacadeLocal.findAll());
+
     }
-    
+
     public List<EstadoCliente> listarUsuarios() {
-        Listestados = estadoClienteFacadeLocal.findAll();
-        return Listestados;
+        ListestadosCli = estadoClienteFacadeLocal.findAll();
+        return ListestadosCli;
     }
-    
+
     public void registrarCliente() {
-        
-        System.out.println("ENTRANDO AL MÉTODO");
-//        clienteFacadeLocal.create(cliente);
-        
+        EstadoCliente estadoCliente = estadoClienteFacadeLocal.find(numeroEstado);
+        cliente.setIdEstadoCliente(estadoCliente);
+        clienteFacadeLocal.create(cliente);
+        PrimeFaces.current().executeScript("Swal.fire({"
+                + "  title: 'Proveedor Registrado con exito!',"
+                + "  text: '',"
+                + "  icon: 'success',"
+                + "  confirmButtonText: 'Ok'"
+                + "})");
+        cliente = new Cliente();
+
     }
-    
-    public List getEstados() {
-        return Listestados;
-    }
-    
-    public void setEstados(List estados) {
-        this.Listestados = estados;
-    }
-    
-    public int getNumero() {
-        return numero;
-    }
-    
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-    
+
     public String getEstado() {
         return estado;
     }
-    
+
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
     public Cliente getCliente() {
         return cliente;
     }
-    
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public int getNumeroEstado() {
+        return numeroEstado;
+    }
+
+    public void setNumeroEstado(int numeroEstado) {
+        this.numeroEstado = numeroEstado;
+    }
+
+    public List getListestadosCli() {
+        return ListestadosCli;
+    }
+
+    public void setListestadosCli(List ListestadosCli) {
+        this.ListestadosCli = ListestadosCli;
     }
 }

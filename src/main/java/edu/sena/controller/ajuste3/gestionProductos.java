@@ -31,6 +31,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -80,11 +81,14 @@ public class gestionProductos implements Serializable {
         Proveedor proveedor = proveedorFacadeLocal.find(idProveedor);
         pro.setIdProveedor(proveedor);
         productoFacadeLocal.create(pro);
-        mensajes = "RegistOK";
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Producto Registrado con exito!',"
+                        + "  text: '',"
+                        + "  icon: 'success',"
+                        + "  confirmButtonText: 'Ok'"
+                        + "})");
         pro = new Producto();
 
-        //productoFacadeLocal.registrarProduc(pro);
-//        mensajes = "regOk   ";
     }
 
     public void descargaReporte() {

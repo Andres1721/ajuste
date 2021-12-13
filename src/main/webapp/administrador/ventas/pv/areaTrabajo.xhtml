@@ -133,28 +133,29 @@
 
                 </section>
             </main><!-- End #main -->
-    <script>
+            <script>
 
-//    alert("Un mensaje de prueba");
-        insertTable = function () {
-            var id_table = "tabla_btn"
-            var pos = document.getElementById(id_table).querySelectorAll("tbody tr").length +1
-            var tr = document.getElementById(id_table).insertRow(pos)
+        //    alert("Un mensaje de prueba");
+                insertTable = function () {
+                    var id_table = "tabla_btn"
+                    var pos = document.getElementById(id_table).querySelectorAll("tbody tr").length + 1
+                    var tr = document.getElementById(id_table).insertRow(pos)
 
-            var num = tr.insertCell(0)
-            var nombre = tr.insertCell(1)
-            var posicion = tr.insertCell(2)
-            var edad = tr.insertCell(3)
-            var fecha = tr.insertCell(4)
+                    var num = tr.insertCell(0)
+                    var nombre = tr.insertCell(1)
+                    var posicion = tr.insertCell(2)
+                    var edad = tr.insertCell(3)
+                    var fecha = tr.insertCell(4)
 
-            num.innerHTML = pos
-            nombre.innerHTML = "dsa"
-            posicion.innerHTML = "Developer"
-            edad.innerHTML = "21"
-            fecha.innerHTML = "2018-10-09"
-        }
+                    num.innerHTML = pos
+                    nombre.innerHTML = "dsa"
+                    posicion.innerHTML = "Developer"
+                    edad.innerHTML = "21"
+                    fecha.innerHTML = "2018-10-09"
+                }
 
-    </script>
+            </script>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         </h:body>
     </ui:composition>
 

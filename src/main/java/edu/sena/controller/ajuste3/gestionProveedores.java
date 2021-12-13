@@ -51,13 +51,12 @@ public class gestionProveedores implements Serializable {
         Documento docu = documentoFacadeLocal.find(tipoDocumento);
         pro.setIdTipoDocumento(docu);
         proveedorFacadeLocal.create(pro);
-
-        PrimeFaces.current().executeScript("Swal.fire({"
-                + "  title: 'OK!',"
-                + "  text: 'Proveedor' Registrado'+," + pro.getRazonSocialProveedor()
-                + "  icon: 'success',"
-                + "  confirmButtonText: 'Aceptar'"
-                + "})");
+                PrimeFaces.current().executeScript("Swal.fire({"
+                        + "  title: 'Proveedor Registrado con exito!',"
+                        + "  text: '',"
+                        + "  icon: 'success',"
+                        + "  confirmButtonText: 'Ok'"
+                        + "})");
         pro = new Proveedor();
 
     }

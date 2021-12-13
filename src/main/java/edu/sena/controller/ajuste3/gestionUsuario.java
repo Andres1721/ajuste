@@ -161,7 +161,7 @@ public class gestionUsuario implements Serializable {
                 Mail.recuperarClaves(usuReg.getNombres() + " " + usuReg.getApellidos(), correoIn, usuReg.getClave());
                 PrimeFaces.current().executeScript("Swal.fire({"
                         + "  title: 'Correo enviado!',"
-                        + "  text: 'Port favor verifique su bandeja de entrada',"
+                        + "  text: '',"
                         + "  icon: 'success',"
                         + "  confirmButtonText: 'Ok'"
                         + "})");

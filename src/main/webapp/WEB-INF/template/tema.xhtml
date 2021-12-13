@@ -9,8 +9,10 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script type="text/javascript" src="dist2/js/site.min.js"></script>
+        <!--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+        <script src="sweetalert2.all.min.js"></script>
+
+        <script type="text/javascript" src="../../dist2/js/site.min.js"></script>
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="-1" />
@@ -62,7 +64,7 @@
         <ui:insert name="pieDePagina">
             <ui:include src="pieDePagina.xhtml"/>
         </ui:insert>
-
+        <script type="text/javascript" src="../../dist2/js/site.min.js"></script>
 
         <!-- Template Main JS File -->
         <script src="#{request.contextPath}/assets/js/main.js"></script>
@@ -70,7 +72,13 @@
         <script src="#{request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <script src="#{request.contextPath}/assets/vendor/php-email-form/validate.js"></script>
         <script src="#{request.contextPath}/assets/vendor/quill/quill.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/tinymce/jquery.tinymce.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/tinymce/jquery.tinymce.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/tinymce/tinymce.js"></script>
         <script src="#{request.contextPath}/assets/vendor/tinymce/tinymce.min.js"></script>
+        <script src="#{request.contextPath}/assets/vendor/tinymce/tinymce.js"></script>
+
+
         <script src="#{request.contextPath}/assets/vendor/simple-datatables/simple-datatables.js"></script>
         <script src="#{request.contextPath}/assets/vendor/chart.js/chart.min.js"></script>
         <script src="#{request.contextPath}/assets/vendor/apexcharts/apexcharts.min.js"></script>
